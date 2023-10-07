@@ -66,7 +66,7 @@ const Wallet = () => {
               {(() => {
                 if (!connected) {
                   return (
-                    <button onClick={openConnectModal} type="button" className='px-4 py-2 border border-gray-300 rounded-xl shadow-sm'>
+                    <button onClick={openConnectModal} type="button" className='btn px-4 py-2 border border-gray-300 rounded-xl shadow-sm'>
                       Connect Wallet
                     </button>
                   );
@@ -74,7 +74,7 @@ const Wallet = () => {
 
                 if (chain.unsupported) {
                   return (
-                    <button onClick={openChainModal} type="button" className='px-4 py-2 border border-gray-300 rounded-xl shadow-sm'>
+                    <button onClick={openChainModal} type="button" className='btn px-4 py-2 border border-gray-300 rounded-xl shadow-sm'>
                       Wrong network
                     </button>
                   );
@@ -86,7 +86,7 @@ const Wallet = () => {
                       onClick={openChainModal}
                       style={{ display: 'flex', alignItems: 'center' }}
                       type="button"
-                      className='px-4 border border-gray-300 rounded-xl shadow-sm'
+                      className='btn px-4 border border-gray-300 rounded-xl shadow-sm'
                     >
                       {chain.hasIcon && (
                         <div
@@ -114,7 +114,7 @@ const Wallet = () => {
                       <button
                         onClick={toggleDropdown}
                         type="button"
-                        className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                        className="btn inline-flex items-center px-4 py-2 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
                         id="dropdown-menu-button"
                         aria-expanded={isOpen ? 'true' : 'false'}
                         aria-haspopup="true"
