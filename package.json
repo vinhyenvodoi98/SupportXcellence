@@ -1,0 +1,16 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -n network,contract -c cyan,magenta \"cd packages/contracts && pnpm run local\" \"sleep 10 && cd packages/contracts && pnpm run dev\"",
+    "lint": "cd packages/client && pnpm lint:fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.1.0"
+  }
+}
