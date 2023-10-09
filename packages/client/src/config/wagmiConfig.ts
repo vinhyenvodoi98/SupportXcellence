@@ -12,7 +12,7 @@ const { chains, publicClient } = configureChains(
   [
     ...(process.env.NODE_ENV === 'development'
       ? [scrollSepolia, mantleTestnet, polygonMumbai, goerli]
-      : []),
+      : [scrollSepolia, mantleTestnet, polygonMumbai, goerli]),
   ],
   [
     jsonRpcProvider({

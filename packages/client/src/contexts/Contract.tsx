@@ -22,7 +22,7 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   // Get data
   const { data: count, refetch: senderRefetch } = useContractRead({
-    address: contractAddress.address as `0x${string}`,
+    address: contractAddress['5001'].address as `0x${string}`,
     abi: contractAbi.abi as any,
     functionName: 'getCount',
     cacheTime: 10_000,
@@ -47,7 +47,7 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   // write contract
   const { config } = usePrepareContractWrite({
     abi: contractAbi.abi,
-    address: contractAddress.address as `0x${string}`,
+    address: contractAddress['5001'].address as `0x${string}`,
     functionName: 'increment',
     args: [],
   });
