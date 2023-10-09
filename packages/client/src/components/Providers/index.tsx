@@ -1,11 +1,10 @@
-"use client";
-import { chains, wagmiConfig } from "@/config/wagmiConfig";
-import {
-  darkTheme,
-  RainbowKitProvider,
-} from "@rainbow-me/rainbowkit";
-import "@rainbow-me/rainbowkit/styles.css";
-import { WagmiConfig } from "wagmi";
+'use client';
+import { darkTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { WagmiConfig } from 'wagmi';
+
+import '@rainbow-me/rainbowkit/styles.css';
+
+import { chains, wagmiConfig } from '@/config/wagmiConfig';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, ReactNode, useContext, useEffect } from 'react';
 import {
   useContractRead,
   useContractWrite,
@@ -10,12 +10,16 @@ interface ContractContextType {
   increment: (() => void) | undefined;
 }
 
-const ContractContext = createContext<ContractContextType | undefined>(undefined);
+const ContractContext = createContext<ContractContextType | undefined>(
+  undefined
+);
 
 import contractAbi from '../../../contracts-hardhat/artifacts/contracts/Counter.sol/Counter.json';
 import contractAddress from '../../../contracts-hardhat/contract-address.json';
 
-export const ContractProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ContractProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   // Get data
   const { data: count, refetch: senderRefetch } = useContractRead({
     address: contractAddress.address as `0x${string}`,
@@ -48,10 +52,10 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({ children }
     args: [],
   });
 
-  const { write:increment } = useContractWrite(config);
+  const { write: increment } = useContractWrite(config);
 
   return (
-    <ContractContext.Provider value={{ count , increment }}>
+    <ContractContext.Provider value={{ count, increment }}>
       {children}
     </ContractContext.Provider>
   );

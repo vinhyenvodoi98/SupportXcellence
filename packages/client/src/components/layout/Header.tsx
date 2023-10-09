@@ -1,18 +1,18 @@
+import Link from 'next/link';
 import * as React from 'react';
 
 import Wallet from '@/components/Providers/wallet';
 
 export default function Header() {
   return (
-    <div className=' bg-base-100 p-4'>
-      <div className="navbar shadow-xl rounded-box">
-        <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">Home</a>
+    <div className='bg-base-100 p-4 sticky top-0 bg-transparent'>
+      <div className='navbar shadow-xl rounded-box border'>
+        <div className='flex-1'>
+          <Link href='/' className='btn btn-ghost normal-case text-xl'>
+            Home
+          </Link>
         </div>
-        <div className="flex-none gap-2">
-          <div className="form-control">
-            <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-          </div>
+        <div className='flex-none gap-2'>
           <Wallet />
         </div>
       </div>

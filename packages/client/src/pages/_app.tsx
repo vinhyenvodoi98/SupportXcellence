@@ -1,16 +1,16 @@
 import { AppProps } from 'next/app';
-
-import { ToastContainer } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
 
 import '@/styles/globals.css';
 import '@/styles/colors.css';
-import "react-toastify/ReactToastify.min.css";
+import 'react-toastify/ReactToastify.min.css';
 
 import Header from '@/components/layout/Header';
+import Providers from '@/components/Providers';
+
+import { ContractProvider } from '@/contexts/Contract';
 
 import { useIsSsr } from '../utils/ssr';
-import { ContractProvider } from '@/contexts/Contract';
-import Providers from '@/components/Providers';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const isSsr = useIsSsr();
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ContractProvider>
         <Component {...pageProps} />
       </ContractProvider>
-      <ToastContainer position="bottom-right" newestOnTop />
+      <ToastContainer position='bottom-right' newestOnTop />
     </Providers>
   );
 }

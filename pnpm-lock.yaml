@@ -10,6 +10,48 @@ importers:
 
   packages/client:
     dependencies:
+      '@editorjs/checklist':
+        specifier: ^1.5.0
+        version: 1.5.0
+      '@editorjs/code':
+        specifier: ^2.8.0
+        version: 2.8.0
+      '@editorjs/delimiter':
+        specifier: ^1.3.0
+        version: 1.3.0
+      '@editorjs/editorjs':
+        specifier: ^2.28.0
+        version: 2.28.0
+      '@editorjs/embed':
+        specifier: ^2.5.3
+        version: 2.5.3
+      '@editorjs/header':
+        specifier: ^2.7.0
+        version: 2.7.0
+      '@editorjs/image':
+        specifier: ^2.8.1
+        version: 2.8.1
+      '@editorjs/link':
+        specifier: ^2.5.0
+        version: 2.5.0
+      '@editorjs/list':
+        specifier: ^1.8.0
+        version: 1.8.0
+      '@editorjs/marker':
+        specifier: ^1.3.0
+        version: 1.3.0
+      '@editorjs/paragraph':
+        specifier: ^2.9.0
+        version: 2.9.0
+      '@editorjs/quote':
+        specifier: ^2.5.0
+        version: 2.5.0
+      '@editorjs/simple-image':
+        specifier: ^1.5.1
+        version: 1.5.1
+      '@editorjs/table':
+        specifier: ^2.2.1
+        version: 2.2.1
       '@rainbow-me/rainbowkit':
         specifier: ^1.0.1
         version: 1.0.1(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)(viem@1.10.14)(wagmi@1.4.2)
@@ -126,12 +168,6 @@ importers:
       '@nomicfoundation/hardhat-verify':
         specifier: ^1.1.1
         version: 1.1.1(hardhat@2.17.1)
-      '@nomiclabs/hardhat-ethers':
-        specifier: ^2.2.3
-        version: 2.2.3(ethers@6.7.1)(hardhat@2.17.1)
-      '@nomiclabs/hardhat-etherscan':
-        specifier: ^3.1.7
-        version: 3.1.7(hardhat@2.17.1)
       hardhat:
         specifier: ^2.17.1
         version: 2.17.1(ts-node@10.9.1)(typescript@4.9.5)
@@ -1510,6 +1546,22 @@ packages:
       case: 1.6.3
     dev: true
 
+  /@codexteam/icons@0.0.4:
+    resolution: {integrity: sha512-V8N/TY2TGyas4wLrPIFq7bcow68b3gu8DfDt1+rrHPtXxcexadKauRJL6eQgfG7Z0LCrN4boLRawR4S9gjIh/Q==}
+    dev: false
+
+  /@codexteam/icons@0.0.5:
+    resolution: {integrity: sha512-s6H2KXhLz2rgbMZSkRm8dsMJvyUNZsEjxobBEg9ztdrb1B2H3pEzY6iTwI4XUPJWJ3c3qRKwV4TrO3J5jUdoQA==}
+    dev: false
+
+  /@codexteam/icons@0.0.6:
+    resolution: {integrity: sha512-L7Q5PET8PjKcBT5wp7VR+FCjwCi5PUp7rd/XjsgQ0CI5FJz0DphyHGRILMuDUdCW2MQT9NHbVr4QP31vwAkS/A==}
+    dev: false
+
+  /@codexteam/icons@0.3.0:
+    resolution: {integrity: sha512-fJE9dfFdgq8xU+sbsxjH0Kt8Yeatw9xHBJWb77DhRkEXz3OCoIS6hrRC1ewHEryxzIjxD8IyQrRq2f+Gz3BcmA==}
+    dev: false
+
   /@coinbase/wallet-sdk@3.7.1:
     resolution: {integrity: sha512-LjyoDCB+7p0waQXfK+fUgcAs3Ezk6S6e+LYaoFjpJ6c9VTop3NyZF40Pi7df4z7QJohCwzuIDjz0Rhtig6Y7Pg==}
     engines: {node: '>= 10.0.0'}
@@ -1548,6 +1600,87 @@ packages:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
+
+  /@editorjs/checklist@1.5.0:
+    resolution: {integrity: sha512-2QUKDvLmtOFDaQLX6C+D9A4hIGBhsYwZW+60fOghSwC80dD931zOAA71cf+xppCTEhcr4eT18C6BJkBGf/DjTw==}
+    dependencies:
+      '@codexteam/icons': 0.3.0
+    dev: false
+
+  /@editorjs/code@2.8.0:
+    resolution: {integrity: sha512-qlv1OqSEPKnLv/ZQgNFmVgqsMbGDkh/qgTEnbVWsS+yujo1nlwgVkqCB8tOkQGVsrpmAYLiWRlA413nKxxCN5w==}
+    dependencies:
+      '@codexteam/icons': 0.0.5
+    dev: false
+
+  /@editorjs/delimiter@1.3.0:
+    resolution: {integrity: sha512-/qz+3yRSPmx6dJpBcwnDfgKtCjOrCsQRoDhXR+wLWirGOchOifhYwQ/6JZyTvcgmY84UEoYY29/dgdWOGVPEEQ==}
+    dependencies:
+      '@codexteam/icons': 0.0.5
+    dev: false
+
+  /@editorjs/editorjs@2.28.0:
+    resolution: {integrity: sha512-v0KxSoX4MSZR5HyEbCo0vBri+qdThasABH9u1O1wC3ZxNMO7FiPJ580rp6uTPeFSDSQBmOL3VmRm7ZMfI3iKAg==}
+    dev: false
+
+  /@editorjs/embed@2.5.3:
+    resolution: {integrity: sha512-+X0xX2tiwQjU/B2rPDv8DOwg0suiqrt2h/o9frjR308YuY1VTpqjLRF1lIV4TmelQyVr9cXkZruaa4Ty1wvfJg==}
+    dev: false
+
+  /@editorjs/header@2.7.0:
+    resolution: {integrity: sha512-4fGKGe2ZYblVqR/P/iw5ieG00uXInFgNMftBMqJRYcB2hUPD30kuu7Sn6eJDcLXoKUMOeqi8Z2AlUxYAmvw7zQ==}
+    dependencies:
+      '@codexteam/icons': 0.0.5
+    dev: false
+
+  /@editorjs/image@2.8.1:
+    resolution: {integrity: sha512-4WscDAoi6OO0F6L7N1mkQymADwj8hHgH/ICk5wGRPdkesUZW1TgldX8XvSmy+f5VylsEi3F/gUggaZsrYxu2sA==}
+    dependencies:
+      '@codexteam/icons': 0.0.6
+    dev: false
+
+  /@editorjs/link@2.5.0:
+    resolution: {integrity: sha512-3Oa1VweBY7Sscjzw8pv1QcWGyP+XdPl6+yu+gXnSETyjz9TQRZUjved0qw2OomYOjMZ3RumrdDJXxoALlZdvuQ==}
+    dependencies:
+      '@babel/runtime': 7.22.3
+      '@codexteam/icons': 0.0.4
+    dev: false
+
+  /@editorjs/list@1.8.0:
+    resolution: {integrity: sha512-Vq6cjyTXBzgegYv/MtTfuDdiz59yGhDEc/yAVXr6lmvoWAFs9cJ4TLuh4/9SbrbhIptcQLDvUjMDKmRrV6v2NQ==}
+    dependencies:
+      '@codexteam/icons': 0.0.4
+    dev: false
+
+  /@editorjs/marker@1.3.0:
+    resolution: {integrity: sha512-RYWYDnFPjNBJgR7KIGjB9gPnUwGvn2aIoRevAm422Wx1mg5eT4gcvwc0T5V76pYPSoD2Z0T2GPkzl9d1hl398w==}
+    dependencies:
+      '@codexteam/icons': 0.0.5
+    dev: false
+
+  /@editorjs/paragraph@2.9.0:
+    resolution: {integrity: sha512-lI6x1eiqFx2X3KmMak6gBlimFqXhG35fQpXMxzrjIphNLr4uPsXhVbyMPimPoLUnS9rM6Q00vptXmP2QNDd0zg==}
+    dependencies:
+      '@codexteam/icons': 0.0.4
+    dev: false
+
+  /@editorjs/quote@2.5.0:
+    resolution: {integrity: sha512-24Mu8cESaj34a0kg1Enj7qiZ3yiCOsZI59+8xpfXLO/NkO7hBYWNForVcBy5yIWs/VLlEZK11FP37f/mHrKugQ==}
+    dependencies:
+      '@codexteam/icons': 0.0.5
+    dev: false
+
+  /@editorjs/simple-image@1.5.1:
+    resolution: {integrity: sha512-eXfNzYMOPE7I/HllX00XvEO1MGiFu34lzOIyQzxQ3GdD+GlEJgIN9IhLGN7glsyAhCVmNyxNXGa9kUHzWQ9c5Q==}
+    dependencies:
+      '@codexteam/icons': 0.0.6
+    dev: false
+
+  /@editorjs/table@2.2.1:
+    resolution: {integrity: sha512-6RJKF0DfPh7YuBVPmT5mHXjjhil2IJ8ytZpw2hTHAuduqoRlu6OJbaGzH2NTCdg7cgD4H4BbX0RB9kcVxRtB2w==}
+    dependencies:
+      '@codexteam/icons': 0.0.6
+    dev: false
 
   /@emotion/hash@0.8.0:
     resolution: {integrity: sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==}
@@ -2470,7 +2603,7 @@ packages:
       '@nomicfoundation/ethereumjs-tx': 5.0.1
       '@nomicfoundation/ethereumjs-util': 9.0.1
       abstract-level: 1.0.3
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
       ethereum-cryptography: 0.1.3
       level: 8.0.0
       lru-cache: 5.1.1
@@ -2511,7 +2644,7 @@ packages:
       '@nomicfoundation/ethereumjs-common': 4.0.1
       '@nomicfoundation/ethereumjs-tx': 5.0.1
       '@nomicfoundation/ethereumjs-util': 9.0.1
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
       ethereum-cryptography: 0.1.3
       mcl-wasm: 0.7.9
       rustbn.js: 0.2.0
@@ -2532,7 +2665,7 @@ packages:
     dependencies:
       '@nomicfoundation/ethereumjs-common': 4.0.1
       '@nomicfoundation/ethereumjs-rlp': 5.0.1
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
       ethereum-cryptography: 0.1.3
       ethers: 5.7.2
       js-sdsl: 4.4.2
@@ -2590,7 +2723,7 @@ packages:
       '@nomicfoundation/ethereumjs-trie': 6.0.1
       '@nomicfoundation/ethereumjs-tx': 5.0.1
       '@nomicfoundation/ethereumjs-util': 9.0.1
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
       ethereum-cryptography: 0.1.3
       mcl-wasm: 0.7.9
       rustbn.js: 0.2.0
@@ -2624,7 +2757,7 @@ packages:
       ethers: ^6.1.0
       hardhat: ^2.0.0
     dependencies:
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
       ethers: 6.7.1
       hardhat: 2.17.1(ts-node@10.9.1)(typescript@4.9.5)
       lodash.isequal: 4.5.0
@@ -2690,7 +2823,7 @@ packages:
       '@ethersproject/address': 5.7.0
       cbor: 8.1.0
       chalk: 2.4.2
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
       hardhat: 2.17.1(ts-node@10.9.1)(typescript@4.9.5)
       lodash.clonedeep: 4.5.0
       semver: 6.3.0
@@ -2804,36 +2937,6 @@ packages:
       '@nomicfoundation/solidity-analyzer-win32-arm64-msvc': 0.1.1
       '@nomicfoundation/solidity-analyzer-win32-ia32-msvc': 0.1.1
       '@nomicfoundation/solidity-analyzer-win32-x64-msvc': 0.1.1
-    dev: true
-
-  /@nomiclabs/hardhat-ethers@2.2.3(ethers@6.7.1)(hardhat@2.17.1):
-    resolution: {integrity: sha512-YhzPdzb612X591FOe68q+qXVXGG2ANZRvDo0RRUtimev85rCrAlv/TLMEZw5c+kq9AbzocLTVX/h2jVIFPL9Xg==}
-    peerDependencies:
-      ethers: ^5.0.0
-      hardhat: ^2.0.0
-    dependencies:
-      ethers: 6.7.1
-      hardhat: 2.17.1(ts-node@10.9.1)(typescript@4.9.5)
-    dev: true
-
-  /@nomiclabs/hardhat-etherscan@3.1.7(hardhat@2.17.1):
-    resolution: {integrity: sha512-tZ3TvSgpvsQ6B6OGmo1/Au6u8BrAkvs1mIC/eURA3xgIfznUZBhmpne8hv7BXUzw9xNL3fXdpOYgOQlVMTcoHQ==}
-    peerDependencies:
-      hardhat: ^2.0.4
-    dependencies:
-      '@ethersproject/abi': 5.7.0
-      '@ethersproject/address': 5.7.0
-      cbor: 8.1.0
-      chalk: 2.4.2
-      debug: 4.3.4(supports-color@9.3.1)
-      fs-extra: 7.0.1
-      hardhat: 2.17.1(ts-node@10.9.1)(typescript@4.9.5)
-      lodash: 4.17.21
-      semver: 6.3.0
-      table: 6.8.1
-      undici: 5.23.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /@pkgr/utils@2.4.1:
@@ -5901,7 +6004,7 @@ packages:
     hasBin: true
     dependencies:
       address: 1.2.2
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7031,7 +7134,7 @@ packages:
       debug:
         optional: true
     dependencies:
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
     dev: true
 
   /for-each@0.3.3:
@@ -7462,7 +7565,7 @@ packages:
       chalk: 2.4.2
       chokidar: 3.5.3
       ci-info: 2.0.0
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
       enquirer: 2.4.1
       env-paths: 2.2.1
       ethereum-cryptography: 1.2.0
@@ -11614,7 +11717,7 @@ packages:
       typescript: '>=4.3.0'
     dependencies:
       '@types/prettier': 2.7.3
-      debug: 4.3.4(supports-color@9.3.1)
+      debug: 4.3.4(supports-color@8.1.1)
       fs-extra: 7.0.1
       glob: 7.1.7
       js-sha3: 0.8.0

@@ -1,36 +1,30 @@
-import * as React from 'react';
-import { useAccount } from 'wagmi';
-
 import Layout from '@/components/layout/Layout';
-
-import { toast } from "react-toastify";
-import { useContract } from '@/contexts/Contract';
+import ProjectCard from '@/components/ProjectCard';
 
 export default function HomePage() {
-  const { address } = useAccount();
-  const { count, increment } = useContract();
-  const addNotification = () => {
-    // https://fkhadra.github.io/react-toastify/promise
-    const functionThatReturnPromise = () => new Promise(resolve => setTimeout(resolve, 3000));
-    toast.promise(
-      functionThatReturnPromise,
-      {
-        pending: 'Promise is pending',
-        success: 'Promise resolved 👌',
-        error: 'Promise rejected 🤯'
-      }
-    )
-  };
-
-  console.log({count})
-
+  const projects = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <Layout>
-      <div>{address}</div>
-      <div>data: {count && count.toString()}</div>
-      <button onClick={increment}>Click</button>
-
-      <button onClick={() => addNotification()}>Notification</button>
+      <div className='pt-12'>
+        <div className='form-control w-2/3 m-auto mb-8'>
+          <input
+            type='text'
+            placeholder='Search'
+            className='input input-bordered w-24 md:w-auto'
+          />
+        </div>
+        <div className='flex'>
+          <h1 className='tab tab-lg tab-lifted tab-active'>Projects</h1>
+          <div className='border-b w-full'></div>
+        </div>
+        <div className='grid grid-cols-3 gap-8 pt-8'>
+          {projects.map((project, index) => (
+            <div key={index}>
+              <ProjectCard />
+            </div>
+          ))}
+        </div>
+      </div>
     </Layout>
   );
 }

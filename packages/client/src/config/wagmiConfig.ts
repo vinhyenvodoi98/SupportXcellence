@@ -1,16 +1,16 @@
-import { getDefaultWallets } from "@rainbow-me/rainbowkit";
-import { configureChains, createConfig } from "wagmi";
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig } from 'wagmi';
 import {
-    polygonMumbai,
-    goerli,
-    scrollSepolia,
-    mantleTestnet
-  } from 'wagmi/chains';
-import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
+  goerli,
+  mantleTestnet,
+  polygonMumbai,
+  scrollSepolia,
+} from 'wagmi/chains';
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
 const { chains, publicClient } = configureChains(
   [
-    ...(process.env.NODE_ENV === "development"
+    ...(process.env.NODE_ENV === 'development'
       ? [scrollSepolia, mantleTestnet, polygonMumbai, goerli]
       : []),
   ],
