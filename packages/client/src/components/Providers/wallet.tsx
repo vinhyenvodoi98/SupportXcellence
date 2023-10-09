@@ -158,6 +158,12 @@ const Wallet = () => {
                           >
                             <p className='ml-4'>Profile</p>
                           </Link>
+                          <Link
+                            href={`/create-project`}
+                            className='flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                          >
+                            <p className='ml-4'>Create Project</p>
+                          </Link>
                           <div
                             className='flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                             onClick={openAccountModal}

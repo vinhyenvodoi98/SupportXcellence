@@ -1,8 +1,12 @@
+import Link from 'next/link';
+
 import Layout from '@/components/layout/Layout';
 import ProjectCard from '@/components/ProjectCard';
+import FundCard from '@/components/FundCard';
 
 export default function HomePage() {
   const projects = [1, 2, 3, 4, 5, 6, 7, 8];
+  const funds = [1, 2, 3, 4];
   return (
     <Layout>
       <div className='pt-12'>
@@ -14,14 +18,25 @@ export default function HomePage() {
           />
         </div>
         <div className='flex'>
+          <h1 className='tab tab-lg tab-lifted tab-active'>Investment Pools</h1>
+          <div className='border-b w-full'></div>
+        </div>
+        <div className='grid grid-cols-4 gap-8 pt-8 mb-8'>
+          {funds.map((funds, index) => (
+            <Link href={`/funds/${index}`} key={index}>
+              <FundCard />
+            </Link>
+          ))}
+        </div>
+        <div className='flex'>
           <h1 className='tab tab-lg tab-lifted tab-active'>Projects</h1>
           <div className='border-b w-full'></div>
         </div>
         <div className='grid grid-cols-3 gap-8 pt-8'>
           {projects.map((project, index) => (
-            <div key={index}>
+            <Link href={`projects/${index}`} key={index}>
               <ProjectCard />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
