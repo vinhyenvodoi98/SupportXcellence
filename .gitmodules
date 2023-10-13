@@ -1,6 +1,0 @@
-[submodule "packages/contracts-foundry/lib/openzeppelin-contracts"]
-	path = packages/contracts-foundry/lib/openzeppelin-contracts
-	url = https://github.com/Openzeppelin/openzeppelin-contracts
-[submodule "packages/contracts-foundry/lib/solmate"]
-	path = packages/contracts-foundry/lib/solmate
-	url = https://github.com/transmissions11/solmate
