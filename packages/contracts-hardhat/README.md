@@ -31,7 +31,7 @@ npx hardhat verify --network polygonMumbai 0x009F27f08f00429D45E11eD25CAf534883B
 ## Scroll
 ```
 // Deploy
-npx hardhat run scripts/deploy.ts --network mantleTest
+npx hardhat run scripts/deploy.ts --network scrollSepolia
 // Verify
 npx hardhat verify --network scrollSepolia 0x71A1df7BD134AD59C926D3f05D62425D66D18B66
 ```

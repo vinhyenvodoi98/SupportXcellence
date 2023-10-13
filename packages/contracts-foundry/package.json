@@ -1,0 +1,19 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "forge clean && forge build",
+    "local": "anvil -a 5",
+    "dev": "source .env && forge create --rpc-url http://127.0.0.1:8545 --private-key $PRIVATE_KEY src/ProjectFactory.sol:ProjectFactory --json > contractInfo.json",
+    "deploy-mantle-test": "source .env && forge create --rpc-url https://rpc.testnet.mantle.xyz --private-key $PRIVATE_KEY src/ProjectFactory.sol:ProjectFactory --verify --verifier-url https://explorer.testnet.mantle.xyz/api --legacy --json > contractInfo.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cd": "^0.3.3",
+    "concurrently": "^8.1.0"
+  }
+}

@@ -1,0 +1,22 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = [
+    "lib",
+    "node_modules",
+]
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "ds-test/=lib/forge-std/lib/ds-test/src/",
+    "erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+    "forge-std/=lib/forge-std/src/",
+    "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+    "openzeppelin/=lib/openzeppelin-contracts/contracts/",
+]
+
+[rpc_endpoints]
+goerli = "https://rpc.ankr.com/eth_goerli"
+scroll_sepolia = "https://rpc.ankr.com/scroll_sepolia_testnet"
+mantle_test = "https://rpc.testnet.mantle.xyz"
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config

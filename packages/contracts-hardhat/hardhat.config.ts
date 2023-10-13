@@ -8,7 +8,7 @@ const GOERLY_ETHERSCAN = process.env.GOERLY_ETHERSCAN;
 const MUMBAI_ETHERSCAN = process.env.MUMBAI_ETHERSCAN;
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.19",
+  solidity: "0.8.20",
   networks: {
     goerli: {
       url: "https://rpc.ankr.com/eth_goerli",

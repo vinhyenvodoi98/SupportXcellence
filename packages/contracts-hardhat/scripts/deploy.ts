@@ -7,8 +7,9 @@ interface ContractAddress {
 }
 
 async function main() {
-  const counter = await ethers.deployContract("Counter", [], {
+  const counter = await ethers.deployContract("ProjectFactory", [], {
     gasLimit: "0x1000000",
+    gasPrice: ""
   }) as any;
 
   await counter.waitForDeployment();
