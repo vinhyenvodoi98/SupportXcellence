@@ -1,17 +1,23 @@
 #!/bin/bash
 
-addresses=()
+input_file="broadcast/multi/Deploy.s.sol-latest/run.json"
+output_file="output.json"
 
-for file in broadcast/Deploy.s.sol/534351/run-latest.json broadcast/Deploy.s.sol/5001/run-latest.json broadcast/Deploy.s.sol/5/run-latest.json; do
-    address=$(jq -r '.transactions[0].contractAddress' "$file")
-    contractName=$(jq -r '.transactions[0].contractName' "$file")
-    filename=$(echo "$file" | sed 's/.*\/\([^/]*\)\/[^/]*$/\1/')
-    addresses+=("{\"$filename\": {\"$contractName\": \"$address\"}}")
+transactions=$(jq -c '.deployments[]' "$input_file")
+
+contracts=()
+
+for item in $transactions; do
+    contractName=$(echo "$item" | jq -r '.transactions[0].contractName')
+    contractAddress=$(echo "$item" | jq -r '.transactions[0].contractAddress')
+    chain=$(echo "$item" | jq -r '.chain')
+    contracts+=("\"$chain\": {\"$contractName\": \"$contractAddress\"}")
 done
 
-echo "[" > output.json
-echo -n "${addresses[0]}" >> output.json
-for i in "${addresses[@]:1}"; do
-    echo -n ", $i" >> output.json
+echo "{" > "$output_file"
+for i in "${!contracts[@]}"; do
+    echo -n "${contracts[$i]}," >> "$output_file"
 done
-echo "]" >> output.json
+truncate -s-1 $output_file
+echo "}" >> "$output_file"
+

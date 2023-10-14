@@ -10,20 +10,20 @@ contract DeployScript is Script {
   function run() public {
     uint privateKey = vm.envUint("PRIVATE_KEY");
     // // Goerli
-    // vm.createSelectFork(vm.rpcUrl("goerli"));
-    // vm.startBroadcast(privateKey);
-    // address factoryGoerli = address(new VaultFactory());
-    // console.log(factoryGoerli);
+    vm.createSelectFork(vm.rpcUrl("goerli"));
+    vm.startBroadcast(privateKey);
+    address factoryGoerli = address(new VaultFactory());
+    console.log(factoryGoerli);
 
-    // vm.stopBroadcast();
+    vm.stopBroadcast();
 
     // // Scroll
-    // vm.createSelectFork(vm.rpcUrl("scroll-sepolia"));
-    // vm.startBroadcast(privateKey);
-    // address factoryScroll = address(new VaultFactory());
-    // console.log(factoryScroll);
+    vm.createSelectFork(vm.rpcUrl("scroll-sepolia"));
+    vm.startBroadcast(privateKey);
+    address factoryScroll = address(new VaultFactory());
+    console.log(factoryScroll);
 
-    // vm.stopBroadcast();
+    vm.stopBroadcast();
 
     // // Mantle
     vm.createSelectFork(vm.rpcUrl("mantle-test"));

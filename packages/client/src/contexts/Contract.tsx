@@ -1,30 +1,32 @@
 import React, { createContext, ReactNode, useContext, useEffect } from 'react';
 import {
+  useChainId,
   useContractRead,
   useContractWrite,
   usePrepareContractWrite,
 } from 'wagmi';
 
 interface ContractContextType {
-  count: any;
-  increment: (() => void) | undefined;
+  VaultContracts: any;
+  // increment: (() => void) | undefined;
 }
 
 const ContractContext = createContext<ContractContextType | undefined>(
   undefined
 );
 
-import contractAbi from '../../../contracts-hardhat/artifacts/contracts/Counter.sol/Counter.json';
-import contractAddress from '../../../contracts-hardhat/contract-address.json';
+import VaultFactoryAbi from '../../../contract/out/VaultFactory.sol/VaultFactory.json';
+import VaultFactoryAddress from '../../../contract/output.json';
 
 export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const chainid = useChainId()
   // Get data
-  const { data: count, refetch: senderRefetch } = useContractRead({
-    address: contractAddress['5001'].address as `0x${string}`,
-    abi: contractAbi.abi as any,
-    functionName: 'getCount',
+  const { data: VaultContracts, refetch: senderRefetch } = useContractRead({
+    address: VaultFactoryAddress[chainid].VaultFactory as `0x${string}`,
+    abi: VaultFactoryAbi.abi as any,
+    functionName: 'getDeployedContracts',
     cacheTime: 10_000,
     staleTime: 10_000,
   });
@@ -45,17 +47,17 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   // write contract
-  const { config } = usePrepareContractWrite({
-    abi: contractAbi.abi,
-    address: contractAddress['5001'].address as `0x${string}`,
-    functionName: 'increment',
-    args: [],
-  });
+  // const { config } = usePrepareContractWrite({
+  //   abi: contractAbi.abi,
+  //   address: contractAddress['5001'].address as `0x${string}`,
+  //   functionName: 'increment',
+  //   args: [],
+  // });
 
-  const { write: increment } = useContractWrite(config);
+  // const { write: increment } = useContractWrite(config);
 
   return (
-    <ContractContext.Provider value={{ count, increment }}>
+    <ContractContext.Provider value={{ VaultContracts }}>
       {children}
     </ContractContext.Provider>
   );
