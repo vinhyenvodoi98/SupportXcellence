@@ -13,6 +13,11 @@ export default function Header() {
           </Link>
         </div>
         <div className='flex-none gap-2'>
+          <Link href='/funds/create'>
+            <button className='btn border rounded-box'>
+              Create Fund
+            </button>
+          </Link>
           <Wallet />
         </div>
       </div>

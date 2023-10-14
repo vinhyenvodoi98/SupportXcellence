@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useEffect } from 'react';
+import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
 import {
   useChainId,
   useContractRead,
@@ -8,7 +8,8 @@ import {
 
 interface ContractContextType {
   VaultContracts: any;
-  // increment: (() => void) | undefined;
+  createVault: (() => void) | undefined;
+  setCreateVaultParams: Dispatch<SetStateAction<any[]>>;
 }
 
 const ContractContext = createContext<ContractContextType | undefined>(
@@ -16,15 +17,18 @@ const ContractContext = createContext<ContractContextType | undefined>(
 );
 
 import VaultFactoryAbi from '../../../contract/out/VaultFactory.sol/VaultFactory.json';
-import VaultFactoryAddress from '../../../contract/output.json';
+import Addresses from '../../../contract/output.json';
 
 export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const chainid = useChainId()
+  const [createVaultParams, setCreateVaultParams] = useState<any[]>([])
+  const vaultFactoryAddress = Addresses as any
+
   // Get data
   const { data: VaultContracts, refetch: senderRefetch } = useContractRead({
-    address: VaultFactoryAddress[chainid].VaultFactory as `0x${string}`,
+    address: vaultFactoryAddress[chainid].VaultFactory as `0x${string}`,
     abi: VaultFactoryAbi.abi as any,
     functionName: 'getDeployedContracts',
     cacheTime: 10_000,
@@ -47,17 +51,17 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   // write contract
-  // const { config } = usePrepareContractWrite({
-  //   abi: contractAbi.abi,
-  //   address: contractAddress['5001'].address as `0x${string}`,
-  //   functionName: 'increment',
-  //   args: [],
-  // });
+  const { config } = usePrepareContractWrite({
+    abi: VaultFactoryAbi.abi as any,
+    address: vaultFactoryAddress[chainid].VaultFactory as `0x${string}`,
+    functionName: 'createContractVault',
+    args: createVaultParams,
+  });
 
-  // const { write: increment } = useContractWrite(config);
+  const { write: createVault } = useContractWrite(config);
 
   return (
-    <ContractContext.Provider value={{ VaultContracts }}>
+    <ContractContext.Provider value={{ VaultContracts, createVault, setCreateVaultParams }}>
       {children}
     </ContractContext.Provider>
   );

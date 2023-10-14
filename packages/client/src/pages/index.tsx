@@ -3,10 +3,11 @@ import Link from 'next/link';
 import Layout from '@/components/layout/Layout';
 import ProjectCard from '@/components/ProjectCard';
 import FundCard from '@/components/FundCard';
+import { useContract } from '@/contexts/Contract';
 
 export default function HomePage() {
+  const { VaultContracts } = useContract();
   const projects = [1, 2, 3, 4, 5, 6, 7, 8];
-  const funds = [1, 2, 3, 4];
   return (
     <Layout>
       <div className='pt-12'>
@@ -22,8 +23,8 @@ export default function HomePage() {
           <div className='border-b w-full'></div>
         </div>
         <div className='grid grid-cols-4 gap-8 pt-8 mb-8'>
-          {funds.map((funds, index) => (
-            <Link href={`/funds/${index}`} key={index}>
+          {VaultContracts.map((funds:string) => (
+            <Link href={`/funds/${funds}`} key={funds}>
               <FundCard />
             </Link>
           ))}
