@@ -1,0 +1,24 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "ds-test/=lib/forge-std/lib/ds-test/src/",
+    "erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+    "forge-std/=lib/forge-std/src/",
+    "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+    "openzeppelin/=lib/openzeppelin-contracts/contracts/",
+    "@solmate/=lib/solmate",
+]
+
+[rpc_endpoints]
+goerli = "https://rpc.ankr.com/eth_goerli"
+scroll-sepolia = "https://rpc.ankr.com/scroll_sepolia_testnet"
+mantle-test = "https://rpc.testnet.mantle.xyz"
+
+[etherscan]
+goerli = { key = "${ETHERSCAN_API_KEY}" }
+scroll-sepolia = { key = "${ETHERSCAN_API_KEY}", url = "https://sepolia-blockscout.scroll.io/api" }
+mantle-test = { key = "${ETHERSCAN_API_KEY}", url = "https://explorer.testnet.mantle.xyz/api" }
