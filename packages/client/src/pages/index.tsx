@@ -22,10 +22,10 @@ export default function HomePage() {
           <h1 className='tab tab-lg tab-lifted tab-active'>Investment Pools</h1>
           <div className='border-b w-full'></div>
         </div>
-        <div className='grid grid-cols-4 gap-8 pt-8 mb-8'>
-          {VaultContracts.map((funds:string) => (
+        <div className='grid gap-8 pt-8 mb-8'>
+          {VaultContracts.toReversed().map((funds:string) => (
             <Link href={`/funds/${funds}`} key={funds}>
-              <FundCard />
+              <FundCard vaultAddress={funds} />
             </Link>
           ))}
         </div>
