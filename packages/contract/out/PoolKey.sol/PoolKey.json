@@ -1,0 +1,280 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "lib/periphery-next/lib/v4-core/contracts/types/PoolKey.sol",
+    "id": 45786,
+    "exportedSymbols": {
+      "Currency": [
+        45483
+      ],
+      "IHooks": [
+        40085
+      ],
+      "PoolKey": [
+        45785
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "45:655:44",
+    "nodes": [
+      {
+        "id": 45761,
+        "nodeType": "PragmaDirective",
+        "src": "45:24:44",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 45763,
+        "nodeType": "ImportDirective",
+        "src": "71:40:44",
+        "nodes": [],
+        "absolutePath": "lib/periphery-next/lib/v4-core/contracts/types/Currency.sol",
+        "file": "./Currency.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 45786,
+        "sourceUnit": 45732,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 45762,
+              "name": "Currency",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 45483,
+              "src": "79:8:44",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 45765,
+        "nodeType": "ImportDirective",
+        "src": "112:48:44",
+        "nodes": [],
+        "absolutePath": "lib/periphery-next/lib/v4-core/contracts/interfaces/IHooks.sol",
+        "file": "../interfaces/IHooks.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 45786,
+        "sourceUnit": 40086,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 45764,
+              "name": "IHooks",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 40085,
+              "src": "120:6:44",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 45785,
+        "nodeType": "StructDefinition",
+        "src": "213:486:44",
+        "nodes": [],
+        "canonicalName": "PoolKey",
+        "documentation": {
+          "id": 45766,
+          "nodeType": "StructuredDocumentation",
+          "src": "162:51:44",
+          "text": "@notice Returns the key for identifying a pool"
+        },
+        "members": [
+          {
+            "constant": false,
+            "id": 45770,
+            "mutability": "mutable",
+            "name": "currency0",
+            "nameLocation": "310:9:44",
+            "nodeType": "VariableDeclaration",
+            "scope": 45785,
+            "src": "301:18:44",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_userDefinedValueType$_Currency_$45483",
+              "typeString": "Currency"
+            },
+            "typeName": {
+              "id": 45769,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 45768,
+                "name": "Currency",
+                "nameLocations": [
+                  "301:8:44"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 45483,
+                "src": "301:8:44"
+              },
+              "referencedDeclaration": 45483,
+              "src": "301:8:44",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_Currency_$45483",
+                "typeString": "Currency"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 45774,
+            "mutability": "mutable",
+            "name": "currency1",
+            "nameLocation": "402:9:44",
+            "nodeType": "VariableDeclaration",
+            "scope": 45785,
+            "src": "393:18:44",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_userDefinedValueType$_Currency_$45483",
+              "typeString": "Currency"
+            },
+            "typeName": {
+              "id": 45773,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 45772,
+                "name": "Currency",
+                "nameLocations": [
+                  "393:8:44"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 45483,
+                "src": "393:8:44"
+              },
+              "referencedDeclaration": 45483,
+              "src": "393:8:44",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_Currency_$45483",
+                "typeString": "Currency"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 45777,
+            "mutability": "mutable",
+            "name": "fee",
+            "nameLocation": "534:3:44",
+            "nodeType": "VariableDeclaration",
+            "scope": 45785,
+            "src": "527:10:44",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 45776,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "527:6:44",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 45780,
+            "mutability": "mutable",
+            "name": "tickSpacing",
+            "nameLocation": "629:11:44",
+            "nodeType": "VariableDeclaration",
+            "scope": 45785,
+            "src": "623:17:44",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_int24",
+              "typeString": "int24"
+            },
+            "typeName": {
+              "id": 45779,
+              "name": "int24",
+              "nodeType": "ElementaryTypeName",
+              "src": "623:5:44",
+              "typeDescriptions": {
+                "typeIdentifier": "t_int24",
+                "typeString": "int24"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 45784,
+            "mutability": "mutable",
+            "name": "hooks",
+            "nameLocation": "691:5:44",
+            "nodeType": "VariableDeclaration",
+            "scope": 45785,
+            "src": "684:12:44",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IHooks_$40085",
+              "typeString": "contract IHooks"
+            },
+            "typeName": {
+              "id": 45783,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 45782,
+                "name": "IHooks",
+                "nameLocations": [
+                  "684:6:44"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 40085,
+                "src": "684:6:44"
+              },
+              "referencedDeclaration": 40085,
+              "src": "684:6:44",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IHooks_$40085",
+                "typeString": "contract IHooks"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "PoolKey",
+        "nameLocation": "220:7:44",
+        "scope": 45786,
+        "visibility": "public"
+      }
+    ],
+    "license": "GPL-2.0-or-later"
+  },
+  "id": 44
+}

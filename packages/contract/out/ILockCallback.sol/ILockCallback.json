@@ -1,0 +1,268 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "lockAcquired",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "lockAcquired(bytes)": "ab6291fe"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"lockAcquired\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"lockAcquired(bytes)\":{\"params\":{\"data\":\"The data that was passed to the call to lock\"},\"returns\":{\"_0\":\"Any data that you want to be returned from the lock call\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"lockAcquired(bytes)\":{\"notice\":\"Called by the pool manager on `msg.sender` when a lock is acquired\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/periphery-next/lib/v4-core/contracts/interfaces/callback/ILockCallback.sol\":\"ILockCallback\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@ensdomains/=lib/periphery-next/lib/v4-core/node_modules/@ensdomains/\",\":@openzeppelin/=lib/periphery-next/lib/openzeppelin-contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@solmate/=lib/solmate/\",\":@uniswap/v4-core/=lib/periphery-next/lib/v4-core/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-gas-snapshot/=lib/periphery-next/lib/forge-gas-snapshot/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=lib/periphery-next/lib/v4-core/node_modules/hardhat/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":periphery-next/=lib/periphery-next/contracts/\",\":solmate/=lib/solmate/src/\",\":v4-core/=lib/periphery-next/lib/v4-core/contracts/\"]},\"sources\":{\"lib/periphery-next/lib/v4-core/contracts/interfaces/callback/ILockCallback.sol\":{\"keccak256\":\"0xbbe48da53b400e2ebe65e8b2d7fff212f4da3657bafec984c9144387c98f1816\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://364c1990569b9e2f1c2d24ddec70c0a88bd18c9b7262e835f10d6c82cca48a23\",\"dweb:/ipfs/QmNkooBi1MwGtwdZWTtVj3Yje1q1NSbAKvuhirtovid9fu\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.20+commit.a1b79de6"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "lockAcquired",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "lockAcquired(bytes)": {
+            "params": {
+              "data": "The data that was passed to the call to lock"
+            },
+            "returns": {
+              "_0": "Any data that you want to be returned from the lock call"
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "lockAcquired(bytes)": {
+            "notice": "Called by the pool manager on `msg.sender` when a lock is acquired"
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@ensdomains/=lib/periphery-next/lib/v4-core/node_modules/@ensdomains/",
+        ":@openzeppelin/=lib/periphery-next/lib/openzeppelin-contracts/",
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":@solmate/=lib/solmate/",
+        ":@uniswap/v4-core/=lib/periphery-next/lib/v4-core/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-gas-snapshot/=lib/periphery-next/lib/forge-gas-snapshot/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=lib/periphery-next/lib/v4-core/node_modules/hardhat/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts/contracts/",
+        ":periphery-next/=lib/periphery-next/contracts/",
+        ":solmate/=lib/solmate/src/",
+        ":v4-core/=lib/periphery-next/lib/v4-core/contracts/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "lib/periphery-next/lib/v4-core/contracts/interfaces/callback/ILockCallback.sol": "ILockCallback"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/periphery-next/lib/v4-core/contracts/interfaces/callback/ILockCallback.sol": {
+        "keccak256": "0xbbe48da53b400e2ebe65e8b2d7fff212f4da3657bafec984c9144387c98f1816",
+        "urls": [
+          "bzz-raw://364c1990569b9e2f1c2d24ddec70c0a88bd18c9b7262e835f10d6c82cca48a23",
+          "dweb:/ipfs/QmNkooBi1MwGtwdZWTtVj3Yje1q1NSbAKvuhirtovid9fu"
+        ],
+        "license": "GPL-2.0-or-later"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "lib/periphery-next/lib/v4-core/contracts/interfaces/callback/ILockCallback.sol",
+    "id": 44952,
+    "exportedSymbols": {
+      "ILockCallback": [
+        44951
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "45:355:47",
+    "nodes": [
+      {
+        "id": 44942,
+        "nodeType": "PragmaDirective",
+        "src": "45:24:47",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ]
+      },
+      {
+        "id": 44951,
+        "nodeType": "ContractDefinition",
+        "src": "71:328:47",
+        "nodes": [
+          {
+            "id": 44950,
+            "nodeType": "FunctionDefinition",
+            "src": "322:75:47",
+            "nodes": [],
+            "documentation": {
+              "id": 44943,
+              "nodeType": "StructuredDocumentation",
+              "src": "101:216:47",
+              "text": "@notice Called by the pool manager on `msg.sender` when a lock is acquired\n @param data The data that was passed to the call to lock\n @return Any data that you want to be returned from the lock call"
+            },
+            "functionSelector": "ab6291fe",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lockAcquired",
+            "nameLocation": "331:12:47",
+            "parameters": {
+              "id": 44946,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 44945,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "359:4:47",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 44950,
+                  "src": "344:19:47",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 44944,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "344:5:47",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "343:21:47"
+            },
+            "returnParameters": {
+              "id": 44949,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 44948,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 44950,
+                  "src": "383:12:47",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 44947,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "383:5:47",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "382:14:47"
+            },
+            "scope": 44951,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ILockCallback",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          44951
+        ],
+        "name": "ILockCallback",
+        "nameLocation": "81:13:47",
+        "scope": 44952,
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "license": "GPL-2.0-or-later"
+  },
+  "id": 47
+}

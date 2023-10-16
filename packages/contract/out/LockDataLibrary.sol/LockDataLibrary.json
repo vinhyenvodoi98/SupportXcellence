@@ -1,0 +1,1443 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220ca0a7a49792bc584cd8ab1a7d0fa88ed9f6369deb79451d51e44b4034fd95e8f64736f6c63430008140033",
+    "sourceMap": "572:1501:55:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;572:1501:55;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220ca0a7a49792bc584cd8ab1a7d0fa88ed9f6369deb79451d51e44b4034fd95e8f64736f6c63430008140033",
+    "sourceMap": "572:1501:55:-:0;;;;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"This library manages a custom storage implementation for a queue      that tracks current lockers. The \\\"sentinel\\\" storage slot for this data structure,      always passed in as IPoolManager.LockData storage self, stores not just the current      length of the queue but also the global count of non-zero deltas across all lockers.      The values of the data structure start at OFFSET, and each value is a locker address.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/periphery-next/lib/v4-core/contracts/libraries/LockDataLibrary.sol\":\"LockDataLibrary\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@ensdomains/=lib/periphery-next/lib/v4-core/node_modules/@ensdomains/\",\":@openzeppelin/=lib/periphery-next/lib/openzeppelin-contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@solmate/=lib/solmate/\",\":@uniswap/v4-core/=lib/periphery-next/lib/v4-core/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-gas-snapshot/=lib/periphery-next/lib/forge-gas-snapshot/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=lib/periphery-next/lib/v4-core/node_modules/hardhat/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":periphery-next/=lib/periphery-next/contracts/\",\":solmate/=lib/solmate/src/\",\":v4-core/=lib/periphery-next/lib/v4-core/contracts/\"]},\"sources\":{\"lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155.sol\":{\"keccak256\":\"0xe64b3445a3f638890af7ad92464cd18f1f202a2f5a7ed42dabf74317bae43303\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6620b77b8dcd786149534b1c664f94ff1f8bb1ad141e8da7d9ec64b9624c73f0\",\"dweb:/ipfs/QmVWHh5UvQ7PxRUtUNfd94mSxxxStuzV1NBZtLiKqKpBrQ\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x4296879f55019b23e135000eb36896057e7101fb7fb859c5ef690cf14643757b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://87b3541437c8c443ccd36795e56a338ed12855eec17f8da624511b8d1a7e14df\",\"dweb:/ipfs/QmeJQCtZrQjtJLr6u7ZHWeH3pBnjtLWzvRrKViAi7UZqxL\"]},\"lib/periphery-next/lib/v4-core/contracts/interfaces/IFees.sol\":{\"keccak256\":\"0x2fb66160acff9b1a6031e3ada15e4271b25399d6b921dc17679cde1e50f566e2\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://7bb4c14e2f3bc0c92729b3fc24f57aaaaf9bd1930411aa937afd49e2c3811bfb\",\"dweb:/ipfs/QmP8kj9hvpDhWBrjuZUmxX7UAsbbkU6bceRKHdwg66MpPK\"]},\"lib/periphery-next/lib/v4-core/contracts/interfaces/IHooks.sol\":{\"keccak256\":\"0x7263c9c8fef8b2346bebfd67956b287666a8c9e1f74131789650af4945ba4523\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://ef70e4a9ec5d8721fa844216d752d4135d88ad4562a00d125ae158ce40748569\",\"dweb:/ipfs/QmSSRNcCmcvTSmm87hgAMsK3zqfcPkgemqm4JzaQf92PgM\"]},\"lib/periphery-next/lib/v4-core/contracts/interfaces/IPoolManager.sol\":{\"keccak256\":\"0x3fbfd91bbfc633e40250fff6d7d16584ba0b1a0ad71c10b54dea65e2abea844a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3d57ea71fc2027b8f29163903ed521d67a093ce8efaadbce65ba637510924a88\",\"dweb:/ipfs/QmWYALymWy5p6aGqTmS7cCBkNQXspgNYhyzZU5oerJfcwG\"]},\"lib/periphery-next/lib/v4-core/contracts/interfaces/external/IERC20Minimal.sol\":{\"keccak256\":\"0x8dc5ee72426906aeb12f4ae6a2426df059491739bd5cbdb8ea4a3e26970436c6\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f7e30dbbc972cb78d169c8845d6210d27490c8534e68a20d4f296b11ec727b92\",\"dweb:/ipfs/QmXBvaWaAnPW25YGVm2sMbf5mwrzLapUcqPnrNiiGGXxmA\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/BitMath.sol\":{\"keccak256\":\"0x652cd36970d953b3067c766b3b0c0063d4c403eba7352df09ec10dcc868910d9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://e357b092171edb755c8514b4b4ae758a8b43458c7a23409ebf5afd325fefa2be\",\"dweb:/ipfs/QmWKRWT2z15cVbVVDkjqdVnpf8Ck1jytcXbA7zCUevp7b6\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/FixedPoint128.sol\":{\"keccak256\":\"0x1f015a7a107f4c471985a958f1bfbc1710948f9bcd3786a02310bc0ad5080c69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a1cacac08675284f319d151f6bc5d1c66cf1d54c5dad1c620a2e1e1336cbb93a\",\"dweb:/ipfs/QmPf8vQ3mBqniKHwvS1DDEFrV5dJfZSL6mMi9JVy6omQaz\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/FixedPoint96.sol\":{\"keccak256\":\"0x7731aeeba692b0ca5dac8f27803ec9e5ce98795a554c09ae05c220861bd0314e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://963a8155e442d31c4541c387d333db0c02941ae3517e9173ad30ebcb4f6a14e9\",\"dweb:/ipfs/QmevAr8oG4WSoi5gBqQ53VzBuFbDKoZHfJwjuTmVhzm8Tc\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/FullMath.sol\":{\"keccak256\":\"0x6d8760794ed38264579c5da7b2afe8ff5543de999180850bc08687b77dce36ea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0e72da6f868ba5f5c829f78f649286c6b5922a8cda0317dfbb156b8a4d27fb24\",\"dweb:/ipfs/QmUQDZciNFhy4AFGXfYvoy22ihPc7ehvypeRVQwvVcD3vJ\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/LockDataLibrary.sol\":{\"keccak256\":\"0xf4be97b50bca4e569e0e2c8555b11e7397bf79c04fc0322c9d74a9a87fa31674\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://4adf536b8e73fd663d788cfedc7cb8e075359fe0c237e1a9ccc07f4024d21b7b\",\"dweb:/ipfs/QmTSzyLQ8vfZBAvM46dneUwtHyRgy8EkX4oXMzfhY2zmCo\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/Pool.sol\":{\"keccak256\":\"0xe68c53367349bf7d5ec53f10abbe32effabe41c288eea6b42de67941104e4bc7\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://e69c6333c17577871f4995af3d3cdb278ad72b721a5c42d66a0b412e8b3559ed\",\"dweb:/ipfs/QmUtxoY88otDhFprbvST7LbcxacWrQrn4mZ8QfemBQDAxY\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/Position.sol\":{\"keccak256\":\"0x1319e4c172e31427c3b3521dd3c9c9c3949da22e25c9919ae57c47a8c9328e43\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://1e0885e8e035681836fe02213e165d1ab48cf2488cf6ba8f01964b4b026d2b46\",\"dweb:/ipfs/QmR4W3DZYYvctASLFnm7Sf4wk2L77gwNRrTS2mBqtiUaud\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/SafeCast.sol\":{\"keccak256\":\"0xb459cbf9f2cda4c38c11916e888cc2afbe4297c5ae6f50a0976eb83ed0dc9b25\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://5608698d33b18d3f49e3fa1fbdf6e7c6383378f7d53c914dcf14a0411cf7a79b\",\"dweb:/ipfs/QmbF4VWDcTPzH17aczU6eCUcqTp9Be7xiuBGB5TMWmtJAi\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/SqrtPriceMath.sol\":{\"keccak256\":\"0x62cb03c7ce6ce037c82fa74e5aabb2431d6b4ddbca1458efdabf5d6af9ca6f90\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://206e025889f55aa8e5d9db2f846460394b54d6dc6d80a5e4ca1d4b70edd98188\",\"dweb:/ipfs/QmNSzKqtUDXHzgXXDjdNv3ZnHZE3LU4KhwNmkrcWtTRGqk\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/SwapMath.sol\":{\"keccak256\":\"0xac5b75b36ff928e88cbec828bdc9db03e681cc3b337d5d7f6be9fd617b3fef7f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6aaea2ecabdb3fec93c7c6be19ea3a034cf396a59ab96f61c57b5214c04b5a6e\",\"dweb:/ipfs/QmYyd4ExT6xbvEHZTQBv9nZuvU6xjB6EN4uY8TmK8Tceqv\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/TickBitmap.sol\":{\"keccak256\":\"0x7cccb8dff4c76da872a827f1549dc44cdff384d123e77a5361a02a31902bf15c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://88f850cd5bd2bbada4d9514f2516804392c7b23dc2cb541b74e9c88d0a351dcd\",\"dweb:/ipfs/QmZh9LvKUG23oFUZXAAa5gn77MguAbZ41VGjkES5U8N9Em\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/TickMath.sol\":{\"keccak256\":\"0xadffea78a3eed37613b57766d87c0bdb9454d2df39de90d7a450e4a8b3207e56\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c5043430807061e5ccc82986c59b2e074457ff608111a8bd51b413ceaf661c78\",\"dweb:/ipfs/QmXjqKzCrngzidTRmuLUFvwNPqMKtd8xVFLVCycRfEQcWo\"]},\"lib/periphery-next/lib/v4-core/contracts/libraries/UnsafeMath.sol\":{\"keccak256\":\"0x2a8cb75af05f8557b698b089a0ab19e24279fffb7e87cddf5794404c7eaf1c69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://85f68e6d614205f3f0f55f6ac41805e3a7d523d95bda1c443f2e75444443ffe3\",\"dweb:/ipfs/QmdCheMqxWNx4CbxG5MH9BUQeSMeeXF6DHkf7Aax4duRUe\"]},\"lib/periphery-next/lib/v4-core/contracts/types/BalanceDelta.sol\":{\"keccak256\":\"0xb88fc16f2ae715bd796e5cdb77c2297117f18ce2183288ae4680d7f20cce5f85\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://829baa2d4becbf8f0298fcaafb2305cf57bab5bcccdf8ac10d171bbb68c37e6f\",\"dweb:/ipfs/QmPs18e2YgwJECriyft46Rp7p9iECPEpkNXV1gom5NosfF\"]},\"lib/periphery-next/lib/v4-core/contracts/types/Currency.sol\":{\"keccak256\":\"0x008a7aeff6cdb7709a8e5893c9e9895a8a7ad594a0605586174e576b9888ff80\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c773b120bacb261695d4e00973ff25359dbf3aee071d19268833cc76e71f1aa2\",\"dweb:/ipfs/QmawinVYJJSWcQH4Lo5Hh7ond58RHAjeCL13FE47a5Egcw\"]},\"lib/periphery-next/lib/v4-core/contracts/types/PoolId.sol\":{\"keccak256\":\"0xd28e4ac2a0874b5372ab3873a263701ce625a840fc563c63d5ad8f7b3272f325\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://0575161cdbe0c3ef8fa023a5f606563ec793bad863446822bdf310bce8dbcccd\",\"dweb:/ipfs/QmUM26Umcr3LEfM2sZ6eGtgBa2KmQde6Ea6898n8tt38mv\"]},\"lib/periphery-next/lib/v4-core/contracts/types/PoolKey.sol\":{\"keccak256\":\"0x4928c59e15db5af3bff68f4d9243ebe11a1dc4a4cbfa57c564db376086a902ce\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://235245bf768c3b708be7837f6aa3bb6bcab7b25036df99e2cc257363350f6ea7\",\"dweb:/ipfs/QmWPurWV2vYoaVNxZyj4DkCqS8Aode5U9JE8WHmbyVR8jH\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.20+commit.a1b79de6"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@ensdomains/=lib/periphery-next/lib/v4-core/node_modules/@ensdomains/",
+        ":@openzeppelin/=lib/periphery-next/lib/openzeppelin-contracts/",
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":@solmate/=lib/solmate/",
+        ":@uniswap/v4-core/=lib/periphery-next/lib/v4-core/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-gas-snapshot/=lib/periphery-next/lib/forge-gas-snapshot/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=lib/periphery-next/lib/v4-core/node_modules/hardhat/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts/contracts/",
+        ":periphery-next/=lib/periphery-next/contracts/",
+        ":solmate/=lib/solmate/src/",
+        ":v4-core/=lib/periphery-next/lib/v4-core/contracts/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "lib/periphery-next/lib/v4-core/contracts/libraries/LockDataLibrary.sol": "LockDataLibrary"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155.sol": {
+        "keccak256": "0xe64b3445a3f638890af7ad92464cd18f1f202a2f5a7ed42dabf74317bae43303",
+        "urls": [
+          "bzz-raw://6620b77b8dcd786149534b1c664f94ff1f8bb1ad141e8da7d9ec64b9624c73f0",
+          "dweb:/ipfs/QmVWHh5UvQ7PxRUtUNfd94mSxxxStuzV1NBZtLiKqKpBrQ"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
+        "keccak256": "0x4296879f55019b23e135000eb36896057e7101fb7fb859c5ef690cf14643757b",
+        "urls": [
+          "bzz-raw://87b3541437c8c443ccd36795e56a338ed12855eec17f8da624511b8d1a7e14df",
+          "dweb:/ipfs/QmeJQCtZrQjtJLr6u7ZHWeH3pBnjtLWzvRrKViAi7UZqxL"
+        ],
+        "license": "MIT"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/interfaces/IFees.sol": {
+        "keccak256": "0x2fb66160acff9b1a6031e3ada15e4271b25399d6b921dc17679cde1e50f566e2",
+        "urls": [
+          "bzz-raw://7bb4c14e2f3bc0c92729b3fc24f57aaaaf9bd1930411aa937afd49e2c3811bfb",
+          "dweb:/ipfs/QmP8kj9hvpDhWBrjuZUmxX7UAsbbkU6bceRKHdwg66MpPK"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/interfaces/IHooks.sol": {
+        "keccak256": "0x7263c9c8fef8b2346bebfd67956b287666a8c9e1f74131789650af4945ba4523",
+        "urls": [
+          "bzz-raw://ef70e4a9ec5d8721fa844216d752d4135d88ad4562a00d125ae158ce40748569",
+          "dweb:/ipfs/QmSSRNcCmcvTSmm87hgAMsK3zqfcPkgemqm4JzaQf92PgM"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/interfaces/IPoolManager.sol": {
+        "keccak256": "0x3fbfd91bbfc633e40250fff6d7d16584ba0b1a0ad71c10b54dea65e2abea844a",
+        "urls": [
+          "bzz-raw://3d57ea71fc2027b8f29163903ed521d67a093ce8efaadbce65ba637510924a88",
+          "dweb:/ipfs/QmWYALymWy5p6aGqTmS7cCBkNQXspgNYhyzZU5oerJfcwG"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/interfaces/external/IERC20Minimal.sol": {
+        "keccak256": "0x8dc5ee72426906aeb12f4ae6a2426df059491739bd5cbdb8ea4a3e26970436c6",
+        "urls": [
+          "bzz-raw://f7e30dbbc972cb78d169c8845d6210d27490c8534e68a20d4f296b11ec727b92",
+          "dweb:/ipfs/QmXBvaWaAnPW25YGVm2sMbf5mwrzLapUcqPnrNiiGGXxmA"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/BitMath.sol": {
+        "keccak256": "0x652cd36970d953b3067c766b3b0c0063d4c403eba7352df09ec10dcc868910d9",
+        "urls": [
+          "bzz-raw://e357b092171edb755c8514b4b4ae758a8b43458c7a23409ebf5afd325fefa2be",
+          "dweb:/ipfs/QmWKRWT2z15cVbVVDkjqdVnpf8Ck1jytcXbA7zCUevp7b6"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/FixedPoint128.sol": {
+        "keccak256": "0x1f015a7a107f4c471985a958f1bfbc1710948f9bcd3786a02310bc0ad5080c69",
+        "urls": [
+          "bzz-raw://a1cacac08675284f319d151f6bc5d1c66cf1d54c5dad1c620a2e1e1336cbb93a",
+          "dweb:/ipfs/QmPf8vQ3mBqniKHwvS1DDEFrV5dJfZSL6mMi9JVy6omQaz"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/FixedPoint96.sol": {
+        "keccak256": "0x7731aeeba692b0ca5dac8f27803ec9e5ce98795a554c09ae05c220861bd0314e",
+        "urls": [
+          "bzz-raw://963a8155e442d31c4541c387d333db0c02941ae3517e9173ad30ebcb4f6a14e9",
+          "dweb:/ipfs/QmevAr8oG4WSoi5gBqQ53VzBuFbDKoZHfJwjuTmVhzm8Tc"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/FullMath.sol": {
+        "keccak256": "0x6d8760794ed38264579c5da7b2afe8ff5543de999180850bc08687b77dce36ea",
+        "urls": [
+          "bzz-raw://0e72da6f868ba5f5c829f78f649286c6b5922a8cda0317dfbb156b8a4d27fb24",
+          "dweb:/ipfs/QmUQDZciNFhy4AFGXfYvoy22ihPc7ehvypeRVQwvVcD3vJ"
+        ],
+        "license": "MIT"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/LockDataLibrary.sol": {
+        "keccak256": "0xf4be97b50bca4e569e0e2c8555b11e7397bf79c04fc0322c9d74a9a87fa31674",
+        "urls": [
+          "bzz-raw://4adf536b8e73fd663d788cfedc7cb8e075359fe0c237e1a9ccc07f4024d21b7b",
+          "dweb:/ipfs/QmTSzyLQ8vfZBAvM46dneUwtHyRgy8EkX4oXMzfhY2zmCo"
+        ],
+        "license": "BUSL-1.1"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/Pool.sol": {
+        "keccak256": "0xe68c53367349bf7d5ec53f10abbe32effabe41c288eea6b42de67941104e4bc7",
+        "urls": [
+          "bzz-raw://e69c6333c17577871f4995af3d3cdb278ad72b721a5c42d66a0b412e8b3559ed",
+          "dweb:/ipfs/QmUtxoY88otDhFprbvST7LbcxacWrQrn4mZ8QfemBQDAxY"
+        ],
+        "license": "BUSL-1.1"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/Position.sol": {
+        "keccak256": "0x1319e4c172e31427c3b3521dd3c9c9c3949da22e25c9919ae57c47a8c9328e43",
+        "urls": [
+          "bzz-raw://1e0885e8e035681836fe02213e165d1ab48cf2488cf6ba8f01964b4b026d2b46",
+          "dweb:/ipfs/QmR4W3DZYYvctASLFnm7Sf4wk2L77gwNRrTS2mBqtiUaud"
+        ],
+        "license": "BUSL-1.1"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/SafeCast.sol": {
+        "keccak256": "0xb459cbf9f2cda4c38c11916e888cc2afbe4297c5ae6f50a0976eb83ed0dc9b25",
+        "urls": [
+          "bzz-raw://5608698d33b18d3f49e3fa1fbdf6e7c6383378f7d53c914dcf14a0411cf7a79b",
+          "dweb:/ipfs/QmbF4VWDcTPzH17aczU6eCUcqTp9Be7xiuBGB5TMWmtJAi"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/SqrtPriceMath.sol": {
+        "keccak256": "0x62cb03c7ce6ce037c82fa74e5aabb2431d6b4ddbca1458efdabf5d6af9ca6f90",
+        "urls": [
+          "bzz-raw://206e025889f55aa8e5d9db2f846460394b54d6dc6d80a5e4ca1d4b70edd98188",
+          "dweb:/ipfs/QmNSzKqtUDXHzgXXDjdNv3ZnHZE3LU4KhwNmkrcWtTRGqk"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/SwapMath.sol": {
+        "keccak256": "0xac5b75b36ff928e88cbec828bdc9db03e681cc3b337d5d7f6be9fd617b3fef7f",
+        "urls": [
+          "bzz-raw://6aaea2ecabdb3fec93c7c6be19ea3a034cf396a59ab96f61c57b5214c04b5a6e",
+          "dweb:/ipfs/QmYyd4ExT6xbvEHZTQBv9nZuvU6xjB6EN4uY8TmK8Tceqv"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/TickBitmap.sol": {
+        "keccak256": "0x7cccb8dff4c76da872a827f1549dc44cdff384d123e77a5361a02a31902bf15c",
+        "urls": [
+          "bzz-raw://88f850cd5bd2bbada4d9514f2516804392c7b23dc2cb541b74e9c88d0a351dcd",
+          "dweb:/ipfs/QmZh9LvKUG23oFUZXAAa5gn77MguAbZ41VGjkES5U8N9Em"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/TickMath.sol": {
+        "keccak256": "0xadffea78a3eed37613b57766d87c0bdb9454d2df39de90d7a450e4a8b3207e56",
+        "urls": [
+          "bzz-raw://c5043430807061e5ccc82986c59b2e074457ff608111a8bd51b413ceaf661c78",
+          "dweb:/ipfs/QmXjqKzCrngzidTRmuLUFvwNPqMKtd8xVFLVCycRfEQcWo"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/libraries/UnsafeMath.sol": {
+        "keccak256": "0x2a8cb75af05f8557b698b089a0ab19e24279fffb7e87cddf5794404c7eaf1c69",
+        "urls": [
+          "bzz-raw://85f68e6d614205f3f0f55f6ac41805e3a7d523d95bda1c443f2e75444443ffe3",
+          "dweb:/ipfs/QmdCheMqxWNx4CbxG5MH9BUQeSMeeXF6DHkf7Aax4duRUe"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/types/BalanceDelta.sol": {
+        "keccak256": "0xb88fc16f2ae715bd796e5cdb77c2297117f18ce2183288ae4680d7f20cce5f85",
+        "urls": [
+          "bzz-raw://829baa2d4becbf8f0298fcaafb2305cf57bab5bcccdf8ac10d171bbb68c37e6f",
+          "dweb:/ipfs/QmPs18e2YgwJECriyft46Rp7p9iECPEpkNXV1gom5NosfF"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/types/Currency.sol": {
+        "keccak256": "0x008a7aeff6cdb7709a8e5893c9e9895a8a7ad594a0605586174e576b9888ff80",
+        "urls": [
+          "bzz-raw://c773b120bacb261695d4e00973ff25359dbf3aee071d19268833cc76e71f1aa2",
+          "dweb:/ipfs/QmawinVYJJSWcQH4Lo5Hh7ond58RHAjeCL13FE47a5Egcw"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/types/PoolId.sol": {
+        "keccak256": "0xd28e4ac2a0874b5372ab3873a263701ce625a840fc563c63d5ad8f7b3272f325",
+        "urls": [
+          "bzz-raw://0575161cdbe0c3ef8fa023a5f606563ec793bad863446822bdf310bce8dbcccd",
+          "dweb:/ipfs/QmUM26Umcr3LEfM2sZ6eGtgBa2KmQde6Ea6898n8tt38mv"
+        ],
+        "license": "GPL-2.0-or-later"
+      },
+      "lib/periphery-next/lib/v4-core/contracts/types/PoolKey.sol": {
+        "keccak256": "0x4928c59e15db5af3bff68f4d9243ebe11a1dc4a4cbfa57c564db376086a902ce",
+        "urls": [
+          "bzz-raw://235245bf768c3b708be7837f6aa3bb6bcab7b25036df99e2cc257363350f6ea7",
+          "dweb:/ipfs/QmWPurWV2vYoaVNxZyj4DkCqS8Aode5U9JE8WHmbyVR8jH"
+        ],
+        "license": "GPL-2.0-or-later"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "lib/periphery-next/lib/v4-core/contracts/libraries/LockDataLibrary.sol",
+    "id": 46072,
+    "exportedSymbols": {
+      "IPoolManager": [
+        44926
+      ],
+      "LockDataLibrary": [
+        46071
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:2037:55",
+    "nodes": [
+      {
+        "id": 45982,
+        "nodeType": "PragmaDirective",
+        "src": "37:24:55",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ]
+      },
+      {
+        "id": 45984,
+        "nodeType": "ImportDirective",
+        "src": "63:60:55",
+        "nodes": [],
+        "absolutePath": "lib/periphery-next/lib/v4-core/contracts/interfaces/IPoolManager.sol",
+        "file": "../interfaces/IPoolManager.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 46072,
+        "sourceUnit": 44927,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 45983,
+              "name": "IPoolManager",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 44926,
+              "src": "71:12:55",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 46071,
+        "nodeType": "ContractDefinition",
+        "src": "572:1501:55",
+        "nodes": [
+          {
+            "id": 45993,
+            "nodeType": "VariableDeclaration",
+            "src": "602:64:55",
+            "nodes": [],
+            "constant": true,
+            "mutability": "constant",
+            "name": "OFFSET",
+            "nameLocation": "627:6:55",
+            "scope": 46071,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 45986,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "602:7:55",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "arguments": [
+                {
+                  "arguments": [
+                    {
+                      "hexValue": "4c6f636b44617461",
+                      "id": 45990,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "654:10:55",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_760a9a962ae3d184e99c0483cf5684fb3170f47116ca4f445c50209da4f4f906",
+                        "typeString": "literal_string \"LockData\""
+                      },
+                      "value": "LockData"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_stringliteral_760a9a962ae3d184e99c0483cf5684fb3170f47116ca4f445c50209da4f4f906",
+                        "typeString": "literal_string \"LockData\""
+                      }
+                    ],
+                    "id": 45989,
+                    "name": "keccak256",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": -8,
+                    "src": "644:9:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                      "typeString": "function (bytes memory) pure returns (bytes32)"
+                    }
+                  },
+                  "id": 45991,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "nameLocations": [],
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "644:21:55",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                ],
+                "id": 45988,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "nodeType": "ElementaryTypeNameExpression",
+                "src": "636:7:55",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_uint256_$",
+                  "typeString": "type(uint256)"
+                },
+                "typeName": {
+                  "id": 45987,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "636:7:55",
+                  "typeDescriptions": {}
+                }
+              },
+              "id": 45992,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "typeConversion",
+              "lValueRequested": false,
+              "nameLocations": [],
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "636:30:55",
+              "tryCall": false,
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "id": 46024,
+            "nodeType": "FunctionDefinition",
+            "src": "768:598:55",
+            "nodes": [],
+            "body": {
+              "id": 46023,
+              "nodeType": "Block",
+              "src": "843:523:55",
+              "nodes": [],
+              "statements": [
+                {
+                  "assignments": [
+                    46003
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 46003,
+                      "mutability": "mutable",
+                      "name": "length",
+                      "nameLocation": "922:6:55",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 46023,
+                      "src": "914:14:55",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      },
+                      "typeName": {
+                        "id": 46002,
+                        "name": "uint128",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "914:7:55",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint128",
+                          "typeString": "uint128"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 46006,
+                  "initialValue": {
+                    "expression": {
+                      "id": 46004,
+                      "name": "self",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 45997,
+                      "src": "931:4:55",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                        "typeString": "struct IPoolManager.LockData storage pointer"
+                      }
+                    },
+                    "id": 46005,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberLocation": "936:6:55",
+                    "memberName": "length",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 44750,
+                    "src": "931:11:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "914:28:55"
+                },
+                {
+                  "id": 46022,
+                  "nodeType": "UncheckedBlock",
+                  "src": "952:408:55",
+                  "statements": [
+                    {
+                      "assignments": [
+                        46008
+                      ],
+                      "declarations": [
+                        {
+                          "constant": false,
+                          "id": 46008,
+                          "mutability": "mutable",
+                          "name": "indexToWrite",
+                          "nameLocation": "984:12:55",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 46022,
+                          "src": "976:20:55",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "typeName": {
+                            "id": 46007,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "976:7:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "visibility": "internal"
+                        }
+                      ],
+                      "id": 46012,
+                      "initialValue": {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 46011,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 46009,
+                          "name": "OFFSET",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 45993,
+                          "src": "999:6:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "+",
+                        "rightExpression": {
+                          "id": 46010,
+                          "name": "length",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 46003,
+                          "src": "1008:6:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint128",
+                            "typeString": "uint128"
+                          }
+                        },
+                        "src": "999:15:55",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "VariableDeclarationStatement",
+                      "src": "976:38:55"
+                    },
+                    {
+                      "AST": {
+                        "nodeType": "YulBlock",
+                        "src": "1142:122:55",
+                        "statements": [
+                          {
+                            "expression": {
+                              "arguments": [
+                                {
+                                  "name": "indexToWrite",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "1229:12:55"
+                                },
+                                {
+                                  "name": "locker",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "1243:6:55"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "sstore",
+                                "nodeType": "YulIdentifier",
+                                "src": "1222:6:55"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "1222:28:55"
+                            },
+                            "nodeType": "YulExpressionStatement",
+                            "src": "1222:28:55"
+                          }
+                        ]
+                      },
+                      "documentation": "@solidity memory-safe-assembly",
+                      "evmVersion": "paris",
+                      "externalReferences": [
+                        {
+                          "declaration": 46008,
+                          "isOffset": false,
+                          "isSlot": false,
+                          "src": "1229:12:55",
+                          "valueSize": 1
+                        },
+                        {
+                          "declaration": 45999,
+                          "isOffset": false,
+                          "isSlot": false,
+                          "src": "1243:6:55",
+                          "valueSize": 1
+                        }
+                      ],
+                      "id": 46013,
+                      "nodeType": "InlineAssembly",
+                      "src": "1133:131:55"
+                    },
+                    {
+                      "expression": {
+                        "id": 46020,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftHandSide": {
+                          "expression": {
+                            "id": 46014,
+                            "name": "self",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 45997,
+                            "src": "1325:4:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                              "typeString": "struct IPoolManager.LockData storage pointer"
+                            }
+                          },
+                          "id": 46016,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": true,
+                          "memberLocation": "1330:6:55",
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 44750,
+                          "src": "1325:11:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint128",
+                            "typeString": "uint128"
+                          }
+                        },
+                        "nodeType": "Assignment",
+                        "operator": "=",
+                        "rightHandSide": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint128",
+                            "typeString": "uint128"
+                          },
+                          "id": 46019,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 46017,
+                            "name": "length",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 46003,
+                            "src": "1339:6:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint128",
+                              "typeString": "uint128"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "+",
+                          "rightExpression": {
+                            "hexValue": "31",
+                            "id": 46018,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1348:1:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_1_by_1",
+                              "typeString": "int_const 1"
+                            },
+                            "value": "1"
+                          },
+                          "src": "1339:10:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint128",
+                            "typeString": "uint128"
+                          }
+                        },
+                        "src": "1325:24:55",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint128",
+                          "typeString": "uint128"
+                        }
+                      },
+                      "id": 46021,
+                      "nodeType": "ExpressionStatement",
+                      "src": "1325:24:55"
+                    }
+                  ]
+                }
+              ]
+            },
+            "documentation": {
+              "id": 45994,
+              "nodeType": "StructuredDocumentation",
+              "src": "673:90:55",
+              "text": "@dev Pushes a locker onto the end of the queue, and updates the sentinel storage slot."
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "push",
+            "nameLocation": "777:4:55",
+            "parameters": {
+              "id": 46000,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 45997,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "812:4:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 46024,
+                  "src": "782:34:55",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                    "typeString": "struct IPoolManager.LockData"
+                  },
+                  "typeName": {
+                    "id": 45996,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 45995,
+                      "name": "IPoolManager.LockData",
+                      "nameLocations": [
+                        "782:12:55",
+                        "795:8:55"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 44754,
+                      "src": "782:21:55"
+                    },
+                    "referencedDeclaration": 44754,
+                    "src": "782:21:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                      "typeString": "struct IPoolManager.LockData"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 45999,
+                  "mutability": "mutable",
+                  "name": "locker",
+                  "nameLocation": "826:6:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 46024,
+                  "src": "818:14:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 45998,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "818:7:55",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "781:52:55"
+            },
+            "returnParameters": {
+              "id": 46001,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "843:0:55"
+            },
+            "scope": 46071,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "id": 46038,
+            "nodeType": "FunctionDefinition",
+            "src": "1460:122:55",
+            "nodes": [],
+            "body": {
+              "id": 46037,
+              "nodeType": "Block",
+              "src": "1518:64:55",
+              "nodes": [],
+              "statements": [
+                {
+                  "id": 46036,
+                  "nodeType": "UncheckedBlock",
+                  "src": "1528:48:55",
+                  "statements": [
+                    {
+                      "expression": {
+                        "id": 46034,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "UnaryOperation",
+                        "operator": "--",
+                        "prefix": false,
+                        "src": "1552:13:55",
+                        "subExpression": {
+                          "expression": {
+                            "id": 46031,
+                            "name": "self",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 46028,
+                            "src": "1552:4:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                              "typeString": "struct IPoolManager.LockData storage pointer"
+                            }
+                          },
+                          "id": 46033,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": true,
+                          "memberLocation": "1557:6:55",
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 44750,
+                          "src": "1552:11:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint128",
+                            "typeString": "uint128"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint128",
+                          "typeString": "uint128"
+                        }
+                      },
+                      "id": 46035,
+                      "nodeType": "ExpressionStatement",
+                      "src": "1552:13:55"
+                    }
+                  ]
+                }
+              ]
+            },
+            "documentation": {
+              "id": 46025,
+              "nodeType": "StructuredDocumentation",
+              "src": "1372:83:55",
+              "text": "@dev Pops a locker off the end of the queue. Note that no storage gets cleared."
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pop",
+            "nameLocation": "1469:3:55",
+            "parameters": {
+              "id": 46029,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 46028,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "1503:4:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 46038,
+                  "src": "1473:34:55",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                    "typeString": "struct IPoolManager.LockData"
+                  },
+                  "typeName": {
+                    "id": 46027,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 46026,
+                      "name": "IPoolManager.LockData",
+                      "nameLocations": [
+                        "1473:12:55",
+                        "1486:8:55"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 44754,
+                      "src": "1473:21:55"
+                    },
+                    "referencedDeclaration": 44754,
+                    "src": "1473:21:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                      "typeString": "struct IPoolManager.LockData"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1472:36:55"
+            },
+            "returnParameters": {
+              "id": 46030,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1518:0:55"
+            },
+            "scope": 46071,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "id": 46054,
+            "nodeType": "FunctionDefinition",
+            "src": "1588:331:55",
+            "nodes": [],
+            "body": {
+              "id": 46053,
+              "nodeType": "Block",
+              "src": "1655:264:55",
+              "nodes": [],
+              "statements": [
+                {
+                  "id": 46052,
+                  "nodeType": "UncheckedBlock",
+                  "src": "1665:248:55",
+                  "statements": [
+                    {
+                      "assignments": [
+                        46046
+                      ],
+                      "declarations": [
+                        {
+                          "constant": false,
+                          "id": 46046,
+                          "mutability": "mutable",
+                          "name": "position",
+                          "nameLocation": "1697:8:55",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 46052,
+                          "src": "1689:16:55",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "typeName": {
+                            "id": 46045,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1689:7:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "visibility": "internal"
+                        }
+                      ],
+                      "id": 46050,
+                      "initialValue": {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 46049,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 46047,
+                          "name": "OFFSET",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 45993,
+                          "src": "1708:6:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "+",
+                        "rightExpression": {
+                          "id": 46048,
+                          "name": "i",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 46040,
+                          "src": "1717:1:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "1708:10:55",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "VariableDeclarationStatement",
+                      "src": "1689:29:55"
+                    },
+                    {
+                      "AST": {
+                        "nodeType": "YulBlock",
+                        "src": "1846:57:55",
+                        "statements": [
+                          {
+                            "nodeType": "YulAssignment",
+                            "src": "1864:25:55",
+                            "value": {
+                              "arguments": [
+                                {
+                                  "name": "position",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "1880:8:55"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "sload",
+                                "nodeType": "YulIdentifier",
+                                "src": "1874:5:55"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "1874:15:55"
+                            },
+                            "variableNames": [
+                              {
+                                "name": "locker",
+                                "nodeType": "YulIdentifier",
+                                "src": "1864:6:55"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "documentation": "@solidity memory-safe-assembly",
+                      "evmVersion": "paris",
+                      "externalReferences": [
+                        {
+                          "declaration": 46043,
+                          "isOffset": false,
+                          "isSlot": false,
+                          "src": "1864:6:55",
+                          "valueSize": 1
+                        },
+                        {
+                          "declaration": 46046,
+                          "isOffset": false,
+                          "isSlot": false,
+                          "src": "1880:8:55",
+                          "valueSize": 1
+                        }
+                      ],
+                      "id": 46051,
+                      "nodeType": "InlineAssembly",
+                      "src": "1837:66:55"
+                    }
+                  ]
+                }
+              ]
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getLock",
+            "nameLocation": "1597:7:55",
+            "parameters": {
+              "id": 46041,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 46040,
+                  "mutability": "mutable",
+                  "name": "i",
+                  "nameLocation": "1613:1:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 46054,
+                  "src": "1605:9:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 46039,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1605:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1604:11:55"
+            },
+            "returnParameters": {
+              "id": 46044,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 46043,
+                  "mutability": "mutable",
+                  "name": "locker",
+                  "nameLocation": "1647:6:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 46054,
+                  "src": "1639:14:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 46042,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1639:7:55",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1638:16:55"
+            },
+            "scope": 46071,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "id": 46070,
+            "nodeType": "FunctionDefinition",
+            "src": "1925:146:55",
+            "nodes": [],
+            "body": {
+              "id": 46069,
+              "nodeType": "Block",
+              "src": "2023:48:55",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint128",
+                          "typeString": "uint128"
+                        },
+                        "id": 46066,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 46063,
+                            "name": "self",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 46057,
+                            "src": "2048:4:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                              "typeString": "struct IPoolManager.LockData storage pointer"
+                            }
+                          },
+                          "id": 46064,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "2053:6:55",
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 44750,
+                          "src": "2048:11:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint128",
+                            "typeString": "uint128"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "-",
+                        "rightExpression": {
+                          "hexValue": "31",
+                          "id": 46065,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "2062:1:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_1_by_1",
+                            "typeString": "int_const 1"
+                          },
+                          "value": "1"
+                        },
+                        "src": "2048:15:55",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint128",
+                          "typeString": "uint128"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint128",
+                          "typeString": "uint128"
+                        }
+                      ],
+                      "id": 46062,
+                      "name": "getLock",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 46054,
+                      "src": "2040:7:55",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_uint256_$returns$_t_address_$",
+                        "typeString": "function (uint256) view returns (address)"
+                      }
+                    },
+                    "id": 46067,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2040:24:55",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 46061,
+                  "id": 46068,
+                  "nodeType": "Return",
+                  "src": "2033:31:55"
+                }
+              ]
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getActiveLock",
+            "nameLocation": "1934:13:55",
+            "parameters": {
+              "id": 46058,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 46057,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "1978:4:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 46070,
+                  "src": "1948:34:55",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                    "typeString": "struct IPoolManager.LockData"
+                  },
+                  "typeName": {
+                    "id": 46056,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 46055,
+                      "name": "IPoolManager.LockData",
+                      "nameLocations": [
+                        "1948:12:55",
+                        "1961:8:55"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 44754,
+                      "src": "1948:21:55"
+                    },
+                    "referencedDeclaration": 44754,
+                    "src": "1948:21:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_LockData_$44754_storage_ptr",
+                      "typeString": "struct IPoolManager.LockData"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1947:36:55"
+            },
+            "returnParameters": {
+              "id": 46061,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 46060,
+                  "mutability": "mutable",
+                  "name": "locker",
+                  "nameLocation": "2015:6:55",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 46070,
+                  "src": "2007:14:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 46059,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2007:7:55",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2006:16:55"
+            },
+            "scope": 46071,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "LockDataLibrary",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 45985,
+          "nodeType": "StructuredDocumentation",
+          "src": "125:447:55",
+          "text": "@dev This library manages a custom storage implementation for a queue\n      that tracks current lockers. The \"sentinel\" storage slot for this data structure,\n      always passed in as IPoolManager.LockData storage self, stores not just the current\n      length of the queue but also the global count of non-zero deltas across all lockers.\n      The values of the data structure start at OFFSET, and each value is a locker address."
+        },
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          46071
+        ],
+        "name": "LockDataLibrary",
+        "nameLocation": "580:15:55",
+        "scope": 46072,
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "license": "BUSL-1.1"
+  },
+  "id": 55
+}

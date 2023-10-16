@@ -2,15 +2,24 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+solc = "0.8.20"
 
 remappings = [
+    "@ensdomains/=lib/periphery-next/lib/v4-core/node_modules/@ensdomains/",
+    "@openzeppelin/=lib/periphery-next/lib/openzeppelin-contracts/",
     "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@solmate/=lib/solmate/",
+    "@uniswap/v4-core/=lib/periphery-next/lib/v4-core/",
     "ds-test/=lib/forge-std/lib/ds-test/src/",
     "erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+    "forge-gas-snapshot/=lib/periphery-next/lib/forge-gas-snapshot/src/",
     "forge-std/=lib/forge-std/src/",
+    "hardhat/=lib/periphery-next/lib/v4-core/node_modules/hardhat/",
     "openzeppelin-contracts/=lib/openzeppelin-contracts/",
     "openzeppelin/=lib/openzeppelin-contracts/contracts/",
-    "@solmate/=lib/solmate",
+    "periphery-next/=lib/periphery-next/contracts/",
+    "solmate/=lib/solmate/src/",
+    "v4-core/=lib/periphery-next/lib/v4-core/contracts/",
 ]
 
 [rpc_endpoints]
