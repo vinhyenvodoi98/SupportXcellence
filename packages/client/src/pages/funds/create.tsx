@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import Select from 'react-select';
+import { toast } from 'react-toastify';
 import { isAddress } from 'viem';
 import { useContractReads } from 'wagmi';
 
@@ -9,7 +10,6 @@ import Layout from '@/components/layout/Layout';
 import { useContract } from '@/contexts/Contract';
 
 import Erc20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
-import { toast } from 'react-toastify';
 
 export default function CreateProject() {
   const { isVaultSuccess, isVaultLoading, createVault } = useContract();
@@ -47,8 +47,8 @@ export default function CreateProject() {
 
   const createFund = async () => {
     createVault({
-      args: [tokenContract, vaultTokenName, vaultTokenSymbol]
-    })
+      args: [tokenContract, vaultTokenName, vaultTokenSymbol],
+    });
     await new Promise((r) => setTimeout(r, 1000));
     createVault?.();
   };
@@ -64,14 +64,12 @@ export default function CreateProject() {
   }, [token]);
 
   useEffect(() => {
-    if(isVaultSuccess)
-      toast.success("Vault has been created successfully")
-  }, [isVaultSuccess])
+    if (isVaultSuccess) toast.success('Vault has been created successfully');
+  }, [isVaultSuccess]);
 
   useEffect(() => {
-    if(isVaultLoading)
-      toast.info("Transaction created")
-  }, [isVaultLoading])
+    if (isVaultLoading) toast.info('Transaction created');
+  }, [isVaultLoading]);
 
   return (
     <Layout>

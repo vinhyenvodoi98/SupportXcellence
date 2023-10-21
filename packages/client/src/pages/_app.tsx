@@ -20,14 +20,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Providers>
-      <div className='
+      <div
+        className='
         w-full
         min-h-screen
         pb-8
         bg-gradient-to-r
         from-[#cad0ff]
         to-[#e3e3e3]
-        background-animate'>
+        background-animate'
+      >
         <Header />
         <ContractProvider>
           <Component {...pageProps} />

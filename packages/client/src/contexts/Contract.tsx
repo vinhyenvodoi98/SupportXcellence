@@ -1,15 +1,5 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-} from 'react';
-import {
-  useChainId,
-  useContractRead,
-  useContractWrite,
-  usePrepareContractWrite,
-} from 'wagmi';
+import React, { createContext, ReactNode, useContext, useEffect } from 'react';
+import { useChainId, useContractRead, useContractWrite } from 'wagmi';
 
 interface ContractContextType {
   VaultContracts: any;
@@ -57,16 +47,27 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   // write contract
-  const { data: vaultData ,write: createVault, isLoading: isVaultLoading, isSuccess: isVaultSuccess } = useContractWrite({
+  const {
+    data: vaultData,
+    write: createVault,
+    isLoading: isVaultLoading,
+    isSuccess: isVaultSuccess,
+  } = useContractWrite({
     abi: VaultFactoryAbi.abi as any,
     address: vaultFactoryAddress[chainid].VaultFactory as `0x${string}`,
     functionName: 'createContractVault',
-    });
+  });
 
   // vaultData ={hash: '0xf14271c7cf37de5e0a6a5ff20e59a5afa7c7b3ea6e919a7aa56c09c711e3a0fc'}
   return (
     <ContractContext.Provider
-      value={{ VaultContracts, vaultData, isVaultLoading, isVaultSuccess, createVault }}
+      value={{
+        VaultContracts,
+        vaultData,
+        isVaultLoading,
+        isVaultSuccess,
+        createVault,
+      }}
     >
       {children}
     </ContractContext.Provider>

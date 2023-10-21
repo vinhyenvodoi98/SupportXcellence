@@ -1,17 +1,15 @@
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
+import { formatEther, parseEther } from 'viem';
 import { useAccount, useContractReads, useContractWrite } from 'wagmi';
 
-import CountDown from '@/components/CountDown';
+import Deposit from '@/components/Deposit';
+import FlashloanExample from '@/components/FlashLoanExample';
 import Layout from '@/components/layout/Layout';
-import VoteComponent from '@/components/Selection';
+import Withdraw from '@/components/Withdraw';
 
 import ERC20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
 import VaultAbi from '../../../../contract/out/Vault.sol/Vault.json';
-import FlashloanExample from '@/components/FlashLoanExample';
-import { formatEther, parseEther } from 'viem';
-import Deposit from '@/components/Deposit';
-import Withdraw from '@/components/Withdraw';
 
 export default function Funds() {
   const router = useRouter();
@@ -19,9 +17,9 @@ export default function Funds() {
   const endTimestamp = new Date('2023-10-31T23:59:59').getTime();
   const [isVoting, setisVoting] = useState<boolean>(false);
   const [assetTokenAddress, setAssetTokenAddress] = useState('0x');
-  const [tokenBalance, setTokenBalance] = useState<string>('')
+  const [tokenBalance, setTokenBalance] = useState<string>('');
   const { address } = useAccount();
-  const [flashloadAddress, setFlashloadAddress] = useState<string>("");
+  const [flashloadAddress, setFlashloadAddress] = useState<string>('');
   const [amount, setAmount] = useState<number>(0); // reuse for flashloand and deposit
 
   const tabs = ['Flashloan', 'Investments'];
@@ -54,26 +52,32 @@ export default function Funds() {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'balanceOf',
-        args: [address] as any
+        args: [address] as any,
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'getFee',
-      }
+      },
     ],
   });
 
   useEffect(() => {
-    if (token && token[3].status === 'success' && token[4].status === 'success') {
+    if (
+      token &&
+      token[3].status === 'success' &&
+      token[4].status === 'success'
+    ) {
       setAssetTokenAddress(token[3].result.toString());
       setTokenBalance(token[4].result.toString());
     }
   }, [token]);
 
   const fee = useMemo(() => {
-    return (token && !!token[5].result) ? (Number(token[5].result?.toString())/100).toString() : "Loading..."
-  }, [token])
+    return token && !!token[5].result
+      ? (Number(token[5].result?.toString()) / 100).toString()
+      : 'Loading...';
+  }, [token]);
 
   const { data: asset, refetch: refetchAssets } = useContractReads({
     contracts: [
@@ -91,32 +95,32 @@ export default function Funds() {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'convertToAssets',
-        args: [tokenBalance] as any
+        args: [tokenBalance] as any,
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'allowance',
-        args: [address, VaultAddress]
+        args: [address, VaultAddress],
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'balanceOf',
-        args: [address]
-      }
+        args: [address],
+      },
     ],
   });
 
   useEffect(() => {
     // Call fetchData immediately when the component renders
     refetchAssets?.();
-    refetchVault?.()
+    refetchVault?.();
 
     // Set up an interval to call fetchData every 10 seconds
     const interval = setInterval(() => {
       refetchAssets?.();
-      refetchVault?.()
+      refetchVault?.();
     }, 5000); // 5000 milliseconds = 10 seconds
 
     // Cleanup khi component unmount
@@ -125,16 +129,21 @@ export default function Funds() {
     };
   }, []);
 
-  const { data: flashloanHash, isLoading: isFlashloanLoading, isSuccess: isFlashloanSuccess, write: triggerFlashloan } = useContractWrite({
+  const {
+    data: flashloanHash,
+    isLoading: isFlashloanLoading,
+    isSuccess: isFlashloanSuccess,
+    write: triggerFlashloan,
+  } = useContractWrite({
     address: VaultAddress as `0x${string}`,
     abi: VaultAbi.abi as any,
     functionName: 'flashLoanSimple',
-  })
+  });
 
   const isWithdraw = useMemo(() => {
-    if(token && !!token[4].result) return Number(token[4].result) > 0
-    return false
-  }, [token])
+    if (token && !!token[4].result) return Number(token[4].result) > 0;
+    return false;
+  }, [token]);
 
   return (
     <Layout>
@@ -143,15 +152,16 @@ export default function Funds() {
           <div className='stat'>
             <div className='stat-title'>Total Tokens</div>
             <div className='stat-value text-primary'>
-              {token && token[2].result != undefined && formatEther(BigInt(token[2].result.toString()))} {asset && asset[1].result}
+              {token &&
+                token[2].result != undefined &&
+                formatEther(BigInt(token[2].result.toString()))}{' '}
+              {asset && asset[1].result}
             </div>
             <div className='stat-desc'></div>
           </div>
           <div className='stat'>
             <div className='stat-title'>Current Fee</div>
-            <div className='stat-value text-secondary'>
-              {fee} %
-            </div>
+            <div className='stat-value text-secondary'>{fee} %</div>
             <div className='stat-desc'></div>
           </div>
           <div className='stat'>
@@ -208,14 +218,21 @@ export default function Funds() {
             <div className='border-l p-8'>
               <div className='h-60'>
                 <h1 className='text-center mb-16'> Total Repay</h1>
-                <h1 className='text-center'>{amount && (amount + (amount * (Number(fee) * 100))/100)} {asset && asset[1].result}</h1>
+                <h1 className='text-center'>
+                  {amount && amount + (amount * (Number(fee) * 100)) / 100}{' '}
+                  {asset && asset[1].result}
+                </h1>
               </div>
               <div className='flex justify-around'>
-                <button className='btn w-32 btn-success' onClick={() =>
-                  triggerFlashloan({
-                    args: [flashloadAddress, parseEther(amount.toString())],
-                  })}>
-                Run
+                <button
+                  className='btn w-32 btn-success'
+                  onClick={() =>
+                    triggerFlashloan({
+                      args: [flashloadAddress, parseEther(amount.toString())],
+                    })
+                  }
+                >
+                  Run
                 </button>
               </div>
             </div>
@@ -241,39 +258,49 @@ export default function Funds() {
             <div className='border-l p-8'>
               <div className='h-60'>
                 <h1 className='text-center mb-16'>Your Staked</h1>
-                {token && asset &&
+                {token &&
+                  asset &&
                   token[4].result !== undefined &&
-                  asset[2].result !== undefined &&
-                  <div className='flex justify-center'>
-                    <h1 className='text-center'></h1>
-                    <h1 className='text-center'>
-                      {formatEther(BigInt(asset[2].result.toString()))} {asset[1].result}
-                    </h1>
-                    <p className='flex items-end px-2'>
-                      = {formatEther(BigInt(asset[2].result.toString()))} {token[1].result}
-                    </p>
-                  </div>
-                }
+                  asset[2].result !== undefined && (
+                    <div className='flex justify-center'>
+                      <h1 className='text-center'></h1>
+                      <h1 className='text-center'>
+                        {formatEther(BigInt(asset[2].result.toString()))}{' '}
+                        {asset[1].result}
+                      </h1>
+                      <p className='flex items-end px-2'>
+                        = {formatEther(BigInt(asset[2].result.toString()))}{' '}
+                        {token[1].result}
+                      </p>
+                    </div>
+                  )}
               </div>
               <div className='grid grid-cols-2 gap-4'>
-                {asset && token && asset[3].result != undefined &&
-                  asset[4].result != undefined &&
-                  <div className={`${!isWithdraw && 'col-span-2'} grid grid-cols-1`}>
-                    <Deposit
-                      allowance={Number(asset[3].result)}
-                      vaultAddress={VaultAddress as string}
-                      tokenAddress={assetTokenAddress}
-                      symbol={asset && asset[1].result}
-                      balance={asset[4].result}/>
-                  </div>
-                }
-                {isWithdraw &&
+                {asset &&
+                  token &&
+                  asset[3].result != undefined &&
+                  asset[4].result != undefined && (
+                    <div
+                      className={`${
+                        !isWithdraw && 'col-span-2'
+                      } grid grid-cols-1`}
+                    >
+                      <Deposit
+                        allowance={Number(asset[3].result)}
+                        vaultAddress={VaultAddress as string}
+                        tokenAddress={assetTokenAddress}
+                        symbol={asset && asset[1].result}
+                        balance={asset[4].result}
+                      />
+                    </div>
+                  )}
+                {isWithdraw && (
                   <Withdraw
                     vaultAddress={VaultAddress as string}
                     symbol={asset && asset[1].result}
                     convertToAssets={asset && asset[2].result}
                   />
-                }
+                )}
               </div>
             </div>
           </div>
