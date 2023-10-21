@@ -1,3 +1,0 @@
-[submodule "packages/contract/lib/periphery-next"]
-	path = packages/contract/lib/periphery-next
-	url = https://github.com/Uniswap/periphery-next

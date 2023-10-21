@@ -1,12 +1,16 @@
-const Step = ({current, steps}:{current:number, steps: any[]}) => {
-
+const Step = ({ current, steps }: { current: number; steps: any[] }) => {
   return (
-    <ul className="steps">
+    <ul className='steps'>
       {steps.map((step, index) => (
-        <li key={index} className={`step w-40 ${current >= index && "step-success"}`}>{step.title}</li>
+        <li
+          key={index}
+          className={`step w-40 ${current >= index && 'step-success'}`}
+        >
+          {step.title}
+        </li>
       ))}
     </ul>
-    )
-}
+  );
+};
 
-export default Step
+export default Step;

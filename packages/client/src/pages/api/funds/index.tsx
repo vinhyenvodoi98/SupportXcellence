@@ -1,4 +1,3 @@
-import { connectToDatabase } from '@/utils/mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -12,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     // const { db } = await connectToDatabase();
     // await db.collection("User").insertOne({ title: 'Jackie Robinson' });
     // res.status(200).json({ name: "hello" });
-  } catch (error:any) {
+  } catch (error: any) {
     res.status(500).json({ statusCode: 500, message: error.message });
   }
-}
+};

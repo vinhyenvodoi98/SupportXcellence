@@ -1,12 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.20;
 
-import {ERC20} from "@solmate/src/tokens/ERC20.sol";
 import "@solmate/src/mixins/ERC4626.sol";
+import {ERC20} from "@solmate/src/tokens/ERC20.sol";
 import {FixedPointMathLib} from "@solmate/src/utils/FixedPointMathLib.sol";
+import { ISimpleFlashLoan } from "./interfaces/ISimpleFlashLoan.sol";
 
 contract Vault is ERC4626 {
     using FixedPointMathLib for uint256;
+    uint256 private fee = 9; // 0.09% max 10000
 
     ERC20 erc20;
 
@@ -15,6 +17,14 @@ contract Vault is ERC4626 {
     }
 
     receive() external payable virtual {}
+
+    function setFee(uint256 _fee) public virtual {
+        fee = _fee;
+    }
+
+    function getFee() public view returns (uint256) {
+        return fee;
+    }
 
     function totalAssets() public view virtual override returns (uint256) {
         return address(this).balance + asset.balanceOf(address(this));
@@ -25,4 +35,11 @@ contract Vault is ERC4626 {
 
     /// @notice Implemented on L2, invoked via a message from L1. Set the underlying asset (ETH) holdings for ERC4626 conversion/exchange rates
     function setTotalAssets(uint256 _totalAssets) public virtual {}
+
+    function flashLoanSimple(address _receiverAddress, uint256 amount) public virtual {
+        ISimpleFlashLoan receiver = ISimpleFlashLoan(payable(_receiverAddress));
+        receiver.receiveFlashLoan(address(erc20), address(this), fee, amount);
+        // repay the loan
+        erc20.transferFrom(_receiverAddress, address(this), amount + (amount * fee / (10^5)));
+    }
 }

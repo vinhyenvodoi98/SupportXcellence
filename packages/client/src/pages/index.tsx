@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import Layout from '@/components/layout/Layout';
-import ProjectCard from '@/components/ProjectCard';
 import FundCard from '@/components/FundCard';
+import Layout from '@/components/layout/Layout';
+
 import { useContract } from '@/contexts/Contract';
 
 export default function HomePage() {
@@ -15,21 +15,22 @@ export default function HomePage() {
           <input
             type='text'
             placeholder='Search'
-            className='input input-bordered w-24 md:w-auto'
+            className='input input-bordered w-24 md:w-auto glass'
           />
         </div>
         <div className='flex'>
-          <h1 className='tab tab-lg tab-lifted tab-active'>Investment Pools</h1>
+          <h1 className='tab tab-lg tab-lifted tab-active'>Vaults</h1>
           <div className='border-b w-full'></div>
         </div>
-        <div className='grid gap-8 pt-8 mb-8'>
-          {VaultContracts.toReversed().map((funds:string) => (
-            <Link href={`/funds/${funds}`} key={funds}>
-              <FundCard vaultAddress={funds} />
-            </Link>
-          ))}
+        <div className='grid gap-8 p-8 glass rounded-e-lg rounded-bl-lg'>
+          {VaultContracts &&
+            VaultContracts.toReversed().map((funds: string) => (
+              <Link href={`/funds/${funds}`} key={funds}>
+                <FundCard vaultAddress={funds} />
+              </Link>
+            ))}
         </div>
-        <div className='flex'>
+        {/* <div className='flex'>
           <h1 className='tab tab-lg tab-lifted tab-active'>Projects</h1>
           <div className='border-b w-full'></div>
         </div>
@@ -39,7 +40,7 @@ export default function HomePage() {
               <ProjectCard />
             </Link>
           ))}
-        </div>
+        </div> */}
       </div>
     </Layout>
   );

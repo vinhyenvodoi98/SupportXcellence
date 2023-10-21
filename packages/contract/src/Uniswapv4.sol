@@ -14,7 +14,7 @@ contract Uniswapv4 is BaseHook {
         return Hooks.Calls({
             beforeInitialize: false,
             afterInitialize: false,
-            beforeModifyPosition: false,
+            beforeModifyPosition: true,
             afterModifyPosition: false,
             beforeSwap: false,
             afterSwap: false,

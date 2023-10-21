@@ -1,2 +1,5 @@
 Test token scroll
 0x87Fd1163666E8A9E1c95D67053b5783062ad71FF
+
+Simpleflashloan contract
+0xa774Ef3347caEd2084d5632dBA6de0eC5B6fA5B1

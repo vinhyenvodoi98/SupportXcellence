@@ -1,4 +1,4 @@
-import { MongoClient, Db } from 'mongodb';
+import { Db, MongoClient } from 'mongodb';
 
 const { MONGODB_URI: uri, MONGODB_DB: dbName } = process.env;
 
@@ -18,7 +18,8 @@ if (!dbName) {
 }
 
 export async function connectToDatabase() {
-  if (cachedClient && cachedDb) { //キャッシュ変数が入力されているか確認
+  if (cachedClient && cachedDb) {
+    //キャッシュ変数が入力されているか確認
     return { client: cachedClient, db: cachedDb };
   }
 

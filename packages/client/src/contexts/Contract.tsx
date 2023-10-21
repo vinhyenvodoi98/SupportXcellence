@@ -1,4 +1,12 @@
-import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import {
   useChainId,
   useContractRead,
@@ -8,6 +16,9 @@ import {
 
 interface ContractContextType {
   VaultContracts: any;
+  isVaultLoading: boolean;
+  isVaultSuccess: boolean;
+  vaultData: any;
   createVault: (() => void) | undefined;
   setCreateVaultParams: Dispatch<SetStateAction<any[]>>;
 }
@@ -22,9 +33,9 @@ import Addresses from '../../../contract/output.json';
 export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const chainid = useChainId()
-  const [createVaultParams, setCreateVaultParams] = useState<any[]>([])
-  const vaultFactoryAddress = Addresses as any
+  const chainid = useChainId();
+  const [createVaultParams, setCreateVaultParams] = useState<any[]>([]);
+  const vaultFactoryAddress = Addresses as any;
 
   // Get data
   const { data: VaultContracts, refetch: senderRefetch } = useContractRead({
@@ -58,10 +69,13 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
     args: createVaultParams,
   });
 
-  const { write: createVault } = useContractWrite(config);
+  const { data: vaultData ,write: createVault, isLoading: isVaultLoading, isSuccess: isVaultSuccess } = useContractWrite(config);
 
+  // vaultData ={hash: '0xf14271c7cf37de5e0a6a5ff20e59a5afa7c7b3ea6e919a7aa56c09c711e3a0fc'}
   return (
-    <ContractContext.Provider value={{ VaultContracts, createVault, setCreateVaultParams }}>
+    <ContractContext.Provider
+      value={{ VaultContracts, vaultData, isVaultLoading, isVaultSuccess, createVault, setCreateVaultParams }}
+    >
       {children}
     </ContractContext.Provider>
   );

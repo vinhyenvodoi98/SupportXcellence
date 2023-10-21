@@ -26,25 +26,28 @@ const VoteComponent: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="mb-2">
-        Total Votes: <span className="font-bold">{totalVotes}</span>
+    <div className='p-4'>
+      <div className='mb-2'>
+        Total Votes: <span className='font-bold'>{totalVotes}</span>
       </div>
       {voteOptions.map((option) => (
-        <div key={option.id} className="flex items-center mb-2">
+        <div key={option.id} className='flex items-center mb-2'>
           <button
             onClick={() => handleVote(option.id)}
-            className="p-2 bg-blue-500 text-white rounded mr-2"
+            className='p-2 bg-blue-500 text-white rounded mr-2'
           >
             {option.label}
           </button>
-          <div className="relative flex-grow h-4 bg-gray-300 rounded">
+          <div className='relative flex-grow h-4 bg-gray-300 rounded'>
             <div
-              className="absolute top-0 left-0 h-full bg-blue-500 rounded"
+              className='absolute top-0 left-0 h-full bg-blue-500 rounded'
               style={{ width: `${(option.count / totalVotes) * 100}%` }}
             />
           </div>
-          <span className="ml-2">{`${((option.count / totalVotes) * 100).toFixed(2)}%`}</span>
+          <span className='ml-2'>{`${(
+            (option.count / totalVotes) *
+            100
+          ).toFixed(2)}%`}</span>
         </div>
       ))}
     </div>

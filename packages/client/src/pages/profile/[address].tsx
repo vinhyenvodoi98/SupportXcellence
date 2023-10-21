@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import Link from 'next/link';
 
 import FundCard from '@/components/FundCard';
 import Layout from '@/components/layout/Layout';
@@ -44,7 +44,7 @@ export default function Profile() {
         ) : (
           funds.map((fund, index) => (
             <Link href={`/funds/${index}`} key={index}>
-              <FundCard />
+              <FundCard vaultAddress='0x' />
             </Link>
           ))
         )}

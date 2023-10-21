@@ -20,11 +20,20 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Providers>
-      <Header />
-      <ContractProvider>
-        <Component {...pageProps} />
-      </ContractProvider>
-      <ToastContainer position='bottom-right' newestOnTop />
+      <div className='
+        w-full
+        min-h-screen
+        pb-8
+        bg-gradient-to-r
+        from-[#cad0ff]
+        to-[#e3e3e3]
+        background-animate'>
+        <Header />
+        <ContractProvider>
+          <Component {...pageProps} />
+        </ContractProvider>
+        <ToastContainer position='bottom-right' newestOnTop />
+      </div>
     </Providers>
   );
 }

@@ -1,4 +1,4 @@
 export type User = {
-  _id:string
-  address:string
-}
+  _id: string;
+  address: string;
+};
