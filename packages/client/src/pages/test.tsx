@@ -8,7 +8,7 @@ import { useContract } from '@/contexts/Contract';
 import PoolManagerAbi from '../../../contract/out/PoolManager.sol/PoolManager.json';
 
 export default function CreateProject() {
-  const { createVault, setCreateVaultParams } = useContract();
+  const { createVault } = useContract();
   const [token0, settoken0] = useState('');
   const [token1, settoken1] = useState('');
   const [vaultTokenName, setVaultTokenName] = useState<string>('');

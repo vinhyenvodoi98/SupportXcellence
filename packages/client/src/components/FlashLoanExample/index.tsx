@@ -12,10 +12,11 @@ export default function FlashloanExample() {
 
   contract SimpleFlashLoan {
       function receiveFlashLoan(address token ,address vaultAddress, uint24 fee, uint256 borrowAmount) external {
+          IERC20(token).transferFrom(vaultAddress, address(this), borrowAmount);
           // Perform actions with borrowed funds
 
           // Make sure to repay the loan before the end of the transaction
-          IERC20(token).approve(vaultAddress, borrowAmount + (borrowAmount * fee / (10^5)));
+          IERC20(token).approve(vaultAddress, borrowAmount + (borrowAmount * fee / (10**4)));
       }
   }`
 

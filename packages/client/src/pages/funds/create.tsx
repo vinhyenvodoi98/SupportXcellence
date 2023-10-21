@@ -12,7 +12,7 @@ import Erc20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
 import { toast } from 'react-toastify';
 
 export default function CreateProject() {
-  const { isVaultSuccess, isVaultLoading, createVault, setCreateVaultParams } = useContract();
+  const { isVaultSuccess, isVaultLoading, createVault } = useContract();
   const [tokenContract, setTokenContract] = useState<string>('');
   const [vaultTokenName, setVaultTokenName] = useState<string>('');
   const [vaultTokenSymbol, setVaultTokenSymbol] = useState<string>('');
@@ -46,7 +46,9 @@ export default function CreateProject() {
   });
 
   const createFund = async () => {
-    setCreateVaultParams([tokenContract, vaultTokenName, vaultTokenSymbol]);
+    createVault({
+      args: [tokenContract, vaultTokenName, vaultTokenSymbol]
+    })
     await new Promise((r) => setTimeout(r, 1000));
     createVault?.();
   };

@@ -38,8 +38,9 @@ contract Vault is ERC4626 {
 
     function flashLoanSimple(address _receiverAddress, uint256 amount) public virtual {
         ISimpleFlashLoan receiver = ISimpleFlashLoan(payable(_receiverAddress));
+        erc20.approve(_receiverAddress, amount);
         receiver.receiveFlashLoan(address(erc20), address(this), fee, amount);
         // repay the loan
-        erc20.transferFrom(_receiverAddress, address(this), amount + (amount * fee / (10^5)));
+        erc20.transferFrom(_receiverAddress, address(this), amount + (amount * fee / (10**4)));
     }
 }
