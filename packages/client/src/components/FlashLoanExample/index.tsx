@@ -23,6 +23,7 @@ export default function FlashloanExample() {
   return (
     <>
     <button className="btn" onClick={()=>
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         document.getElementById('flashloanexample').showModal()
       }>Example of FlashLoan Contract</button>
