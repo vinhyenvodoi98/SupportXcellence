@@ -31,8 +31,8 @@ export default function HomePage() {
         <div className='grid gap-8 p-8 glass rounded-e-lg rounded-bl-lg mb-4'>
           {VaultContractsScroll &&
             VaultContractsScroll.toReversed().map((funds: string) => (
-              <Link href={`/funds/5/${funds}`} key={funds}>
-                <FundCard vaultAddress={funds} chainId={Number(5)} />
+              <Link href={`/funds/534351/${funds}`} key={funds}>
+                <FundCard vaultAddress={funds} chainId={Number(534351)} />
               </Link>
             ))}
         </div>
@@ -71,8 +71,8 @@ export default function HomePage() {
         <div className='grid gap-8 p-8 glass rounded-e-lg rounded-bl-lg'>
           {VaultContractsGoerli &&
             VaultContractsGoerli.toReversed().map((funds: string) => (
-              <Link href={`/funds/534351/${funds}`} key={funds}>
-                <FundCard vaultAddress={funds} chainId={Number(534351)} />
+              <Link href={`/funds/5/${funds}`} key={funds}>
+                <FundCard vaultAddress={funds} chainId={Number(5)} />
               </Link>
             ))}
         </div>
