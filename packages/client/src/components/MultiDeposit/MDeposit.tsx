@@ -1,13 +1,11 @@
 import { useRouter } from 'next/router';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { formatEther, parseEther } from 'viem';
-import { useAccount, useContractWrite } from 'wagmi';
+import { useContractWrite } from 'wagmi';
 
 import { chainInfo } from '@/constant/chain';
 
-import ERC20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
-import VaultAbi from '../../../../contract/out/Vault.sol/Vault.json';
 import UserContractSenderAbi from '../../../../contract/out/UserContractSender.sol/UserContractSender.json';
 
 interface MDepositInterface {
@@ -60,13 +58,16 @@ const MDeposit = ({
 
   const handle = () => {
     triggerDeposit({
-      args: [{
-        functionName: 0,
-        amount: parseEther(amount.toString()),
-        vaultAddress,
-        assetAddress: tokenAddress,
-      }, userAddress as string],
-      value: fee
+      args: [
+        {
+          functionName: 0,
+          amount: parseEther(amount.toString()),
+          vaultAddress,
+          assetAddress: tokenAddress,
+        },
+        userAddress as string,
+      ],
+      value: fee,
     });
   };
 
@@ -90,9 +91,7 @@ const MDeposit = ({
               ✕
             </button>
           </form>
-          <h3 className='font-bold text-lg'>
-            Deposit
-          </h3>
+          <h3 className='font-bold text-lg'>Deposit</h3>
           <label className='label flex justify-between'>
             <span className='label-text'>Amount: </span>
             <span className='label-text'>

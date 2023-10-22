@@ -75,7 +75,7 @@ export default function FundCard({
               alt='usdt'
               width={50}
               height={50}
-              src='/images/coins/usdt.png'
+              src='/images/coins/dai.png'
             />
             {/* <Image
               className='rounded-full border absolute top-[-5px] right-[-12px]'

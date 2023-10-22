@@ -32,7 +32,7 @@ export default function Funds() {
   const { address } = useAccount();
   const [flashloadAddress, setFlashloadAddress] = useState<string>('');
   const [amount, setAmount] = useState<number>(0); // reuse for flashloand and deposit
-  const [multiChainAmount, setMultiChainAmount] = useState<number>(0)
+  const [multiChainAmount, setMultiChainAmount] = useState<number>(0);
 
   const tabs = ['Flashloan', 'Investments'];
   const [currentTab, setCurrentTab] = useState<number>(0);
@@ -179,7 +179,11 @@ export default function Funds() {
   }, [isFlashloanLoading]);
 
   const isWithdraw = useMemo(() => {
-    if ((token && !!token[4].result && Number(token[4].result) > 0) || multiChainAmount > 0) return true;
+    if (
+      (token && !!token[4].result && Number(token[4].result) > 0) ||
+      multiChainAmount > 0
+    )
+      return true;
     return false;
   }, [token, multiChainAmount]);
 
@@ -314,41 +318,50 @@ export default function Funds() {
               )}
             </div>
             {isMultiChain ? (
-              <MultiDeposit vaultAddress={VaultAddress as string} assetTokenAddress={assetTokenAddress} setMultiChainAmount={setMultiChainAmount}/>
+              <MultiDeposit
+                vaultAddress={VaultAddress as string}
+                assetTokenAddress={assetTokenAddress}
+                setMultiChainAmount={setMultiChainAmount}
+              />
             ) : (
               <div className='p-8 flex flex-col justify-between'>
                 <div className='h-72'>
                   <div className='grid grid-rows-2 h-full'>
                     <h1 className=''>Vault </h1>
                     <div className='grid grid-cols-2'>
-                    {token &&
-                      asset &&
-                      token[4].result !== undefined &&
-                      token[2].result !== undefined &&
-                      asset[2].result !== undefined && (
-                        <div className='flex flex-col justify-center'>
-                          Staked:
-                          <div className='flex justify-center'>
-                            <h1 className='text-center'>
-                              {formatEther(BigInt(token[2].result.toString()))}{' '}
-                              {asset[1].result}
-                            </h1>
-                            <p className='flex px-2'>
-                              = {formatEther(BigInt(asset[2].result.toString()))}{' '}
-                              {token[1].result}
-                            </p>
+                      {token &&
+                        asset &&
+                        token[4].result !== undefined &&
+                        token[2].result !== undefined &&
+                        asset[2].result !== undefined && (
+                          <div className='flex flex-col justify-center'>
+                            Staked:
+                            <div className='flex justify-center'>
+                              <h1 className='text-center'>
+                                {formatEther(
+                                  BigInt(token[2].result.toString())
+                                )}{' '}
+                                {asset[1].result}
+                              </h1>
+                              <p className='flex px-2'>
+                                ={' '}
+                                {formatEther(
+                                  BigInt(asset[2].result.toString())
+                                )}{' '}
+                                {token[1].result}
+                              </p>
+                            </div>
                           </div>
+                        )}
+                      {token && asset && asset[4].result !== undefined && (
+                        <div className='flex flex-col justify-center'>
+                          Balance:
+                          <h1 className='text-center'>
+                            {formatEther(BigInt(asset[4].result.toString()))}{' '}
+                            {token[1].result}
+                          </h1>
                         </div>
                       )}
-                    {token && asset && asset[4].result !== undefined && (
-                      <div className='flex flex-col justify-center'>
-                        Balance:
-                        <h1 className='text-center'>
-                          {formatEther(BigInt(asset[4].result.toString()))}{' '}
-                          {token[1].result}
-                        </h1>
-                      </div>
-                    )}
                     </div>
                   </div>
                 </div>

@@ -87,7 +87,7 @@ const Deposit = ({
   };
 
   const isApproved = useMemo(() => {
-    if (Number(allowance) === 0) return false
+    if (Number(allowance) === 0) return false;
     return Number(allowance) >= Number(parseEther(amount.toString()));
   }, [amount, allowance]);
 
