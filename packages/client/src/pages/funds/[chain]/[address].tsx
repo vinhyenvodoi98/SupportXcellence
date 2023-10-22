@@ -273,7 +273,7 @@ export default function Funds() {
               <div className='h-60'>
                 <h1 className='text-center mb-16'> Total Repay</h1>
                 <h1 className='text-center'>
-                  {amount && amount + (amount * (Number(fee) * 100)) / 100}{' '}
+                  {amount && amount + (amount * (Number(fee) * 100)) / 10000}{' '}
                   {asset && asset[1].result}
                 </h1>
               </div>
