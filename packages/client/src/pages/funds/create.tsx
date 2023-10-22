@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
 import { isAddress } from 'viem';
-import { useContractReads } from 'wagmi';
+import { useChainId, useContractReads } from 'wagmi';
 
 import Layout from '@/components/layout/Layout';
 
@@ -17,12 +17,15 @@ export default function CreateProject() {
   const [vaultTokenName, setVaultTokenName] = useState<string>('');
   const [vaultTokenSymbol, setVaultTokenSymbol] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState<any>(null);
+  const chainId = useChainId()
 
   const options = [
-    { value: 'goelri', label: 'Goelri' },
-    { value: 'scroll-sepolia', label: 'Scroll Sepolia' },
-    { value: 'mantle-test', label: 'Mantle Test' },
+    { value: '5', label: 'Goelri' },
+    { value: '534351', label: 'Scroll Sepolia' },
+    { value: '5001', label: 'Mantle Test' },
   ];
+
+  const defaultOption = useMemo(() => options.filter(option => option.value === chainId.toString())[0], [options, chainId])
 
   // Read token
   const { data: token } = useContractReads({
@@ -31,19 +34,26 @@ export default function CreateProject() {
         address: tokenContract as `0x${string}`,
         abi: Erc20Abi.abi as any,
         functionName: 'name',
+        // chainId: 534351
       },
       {
         address: tokenContract as `0x${string}`,
         abi: Erc20Abi.abi as any,
         functionName: 'symbol',
+        // chainId: 534351
       },
       {
         address: tokenContract as `0x${string}`,
         abi: Erc20Abi.abi as any,
         functionName: 'decimals',
+        // chainId: 534351
       },
     ],
   });
+
+  // useEffect(() => {
+  //   if(isAddress(tokenContract)) fetchTokenInfo?.()
+  // }, [tokenContract])
 
   const createFund = async () => {
     createVault({
@@ -64,7 +74,7 @@ export default function CreateProject() {
   }, [token]);
 
   useEffect(() => {
-    if (isVaultSuccess) toast.success('Vault has been created successfully');
+    if (isVaultSuccess) toast.success('Transaction has been created successfully');
   }, [isVaultSuccess]);
 
   useEffect(() => {
@@ -102,7 +112,7 @@ export default function CreateProject() {
               classNames={{
                 control: () => 'input input-bordered',
               }}
-              defaultValue={selectedOption}
+              value={defaultOption}
               onChange={setSelectedOption}
               options={options}
             />

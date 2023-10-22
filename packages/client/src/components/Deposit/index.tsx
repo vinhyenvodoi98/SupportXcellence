@@ -1,3 +1,5 @@
+import { chainInfo } from '@/constant/chain';
+import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import { formatEther, parseEther } from 'viem';
@@ -23,6 +25,9 @@ const Deposit = ({
 }: DepositInterface) => {
   const [amount, setAmount] = useState(0);
   const { address } = useAccount();
+  const router = useRouter();
+  const { chain: vaultChainId } = router.query;
+  const chains = chainInfo as any;
 
   const {
     data: approveHash,
@@ -47,9 +52,14 @@ const Deposit = ({
   });
 
   useEffect(() => {
-    if (isDepositSuccess || isApproveLoading)
-      toast.success('Vault has been created successfully');
-  }, [isDepositSuccess, isApproveLoading]);
+    if (isDepositSuccess)
+      toast.success(`Transaction has been created successfully: ${chains[vaultChainId as string].browserURL}/tx/${depositHash?.hash}`);
+  }, [isDepositSuccess]);
+
+  useEffect(() => {
+    if (isApproveLoading)
+      toast.success(`Transaction has been created successfully: ${chains[vaultChainId as string].browserURL}/tx/${approveHash?.hash}`);
+  }, [isApproveSuccess]);
 
   useEffect(() => {
     if (isDepositLoading || isApproveLoading) toast.info('Transaction created');

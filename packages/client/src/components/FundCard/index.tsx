@@ -65,13 +65,13 @@ export default function FundCard({ vaultAddress }: { vaultAddress: string }) {
               height={50}
               src='/images/coins/usdt.png'
             />
-            <Image
+            {/* <Image
               className='rounded-full border absolute top-[-5px] right-[-12px]'
               alt='scroll'
               width={24}
               height={24}
               src='/images/chains/scroll.svg'
-            />
+            /> */}
           </div>
           {token && <h2 className='card-title mx-4'> {token[0].result}</h2>}
         </div>

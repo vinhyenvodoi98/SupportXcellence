@@ -1,5 +1,27 @@
-Test token scroll
+# Token Test
+## Scroll Testnet
+```
 0x87Fd1163666E8A9E1c95D67053b5783062ad71FF
+```
+## Mantle Testnet
+```
+0xCF469198A1536Ae58151D8126FF8bE1b6cFDfF83
+```
+## Goerli
+```
+0x1bdE15270371174B1C89a2095eD645851821fEc0
+```
 
-Simpleflashloan contract
+# SimpleFlashLoan contract
+## Scroll Testnet
+```
 0x9b07EF9766e152F2559Ead1593F9eB5f358E3956
+```
+## Mantle Testnet
+```
+0x87Fd1163666E8A9E1c95D67053b5783062ad71FF
+```
+## Goerli
+```
+0x87Fd1163666E8A9E1c95D67053b5783062ad71FF
+```

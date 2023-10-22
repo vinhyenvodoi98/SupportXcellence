@@ -3,7 +3,6 @@ import { configureChains, createConfig } from 'wagmi';
 import {
   goerli,
   mantleTestnet,
-  polygonMumbai,
   scrollSepolia,
 } from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
@@ -11,8 +10,8 @@ import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 const { chains, publicClient } = configureChains(
   [
     ...(process.env.NODE_ENV === 'development'
-      ? [scrollSepolia, mantleTestnet, polygonMumbai, goerli]
-      : [scrollSepolia, mantleTestnet, polygonMumbai, goerli]),
+      ? [scrollSepolia, mantleTestnet, goerli]
+      : [scrollSepolia, mantleTestnet, goerli]),
   ],
   [
     jsonRpcProvider({
@@ -20,11 +19,6 @@ const { chains, publicClient } = configureChains(
         if (chain.id === goerli.id)
           return {
             http: goerli.rpcUrls.public.http[0],
-          };
-
-        if (chain.id === polygonMumbai.id)
-          return {
-            http: polygonMumbai.rpcUrls.public.http[0],
           };
 
         if (chain.id === scrollSepolia.id)

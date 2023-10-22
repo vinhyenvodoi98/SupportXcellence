@@ -1,0 +1,645 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "messageId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "gasAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "payment",
+          "type": "uint256"
+        }
+      ],
+      "name": "GasPayment",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_messageId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_destinationDomain",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_gasAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_refundAddress",
+          "type": "address"
+        }
+      ],
+      "name": "payForGas",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_destinationDomain",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_gasAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "quoteGasPayment",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "payForGas(bytes32,uint32,uint256,address)": "11bf2c18",
+    "quoteGasPayment(uint32,uint256)": "a6929793"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"payment\",\"type\":\"uint256\"}],\"name\":\"GasPayment\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_messageId\",\"type\":\"bytes32\"},{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"_gasAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_refundAddress\",\"type\":\"address\"}],\"name\":\"payForGas\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"_gasAmount\",\"type\":\"uint256\"}],\"name\":\"quoteGasPayment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"GasPayment(bytes32,uint256,uint256)\":{\"params\":{\"gasAmount\":\"The amount of destination gas paid for.\",\"messageId\":\"The ID of the message to pay for.\",\"payment\":\"The amount of native tokens paid.\"}}},\"kind\":\"dev\",\"methods\":{},\"title\":\"IInterchainGasPaymaster\",\"version\":1},\"userdoc\":{\"events\":{\"GasPayment(bytes32,uint256,uint256)\":{\"notice\":\"Emitted when a payment is made for a message's gas costs.\"}},\"kind\":\"user\",\"methods\":{},\"notice\":\"Manages payments on a source chain to cover gas costs of relaying messages to destination chains.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/interfaces/IInterchainGasPaymaster.sol\":\"IInterchainGasPaymaster\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@ensdomains/=lib/periphery-next/lib/v4-core/node_modules/@ensdomains/\",\":@openzeppelin/=lib/periphery-next/lib/openzeppelin-contracts/\",\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":@solmate/=lib/solmate/\",\":@uniswap/v4-core/=lib/periphery-next/lib/v4-core/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-gas-snapshot/=lib/periphery-next/lib/forge-gas-snapshot/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=lib/periphery-next/lib/v4-core/node_modules/hardhat/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":periphery-next/=lib/periphery-next/contracts/\",\":solmate/=lib/solmate/src/\",\":v4-core/=lib/periphery-next/lib/v4-core/contracts/\"]},\"sources\":{\"src/interfaces/IInterchainGasPaymaster.sol\":{\"keccak256\":\"0x3de1444709c70c46157062a12ba152281e9784b12c1d9af50919b3158d0edacb\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://a74cd63fe911c43f70735df0eba197627502eceba8d4ec17d2291ede6781682e\",\"dweb:/ipfs/QmNPx1V5RbauouoQ4CHR4GJEfA9SRsqTHbBnivej6STcaP\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.20+commit.a1b79de6"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "messageId",
+              "type": "bytes32",
+              "indexed": true
+            },
+            {
+              "internalType": "uint256",
+              "name": "gasAmount",
+              "type": "uint256",
+              "indexed": false
+            },
+            {
+              "internalType": "uint256",
+              "name": "payment",
+              "type": "uint256",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "GasPayment",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "_messageId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "_destinationDomain",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "_gasAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "_refundAddress",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function",
+          "name": "payForGas"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "_destinationDomain",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "_gasAmount",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "quoteGasPayment",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@ensdomains/=lib/periphery-next/lib/v4-core/node_modules/@ensdomains/",
+        ":@openzeppelin/=lib/periphery-next/lib/openzeppelin-contracts/",
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":@solmate/=lib/solmate/",
+        ":@uniswap/v4-core/=lib/periphery-next/lib/v4-core/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-gas-snapshot/=lib/periphery-next/lib/forge-gas-snapshot/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=lib/periphery-next/lib/v4-core/node_modules/hardhat/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts/contracts/",
+        ":periphery-next/=lib/periphery-next/contracts/",
+        ":solmate/=lib/solmate/src/",
+        ":v4-core/=lib/periphery-next/lib/v4-core/contracts/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/interfaces/IInterchainGasPaymaster.sol": "IInterchainGasPaymaster"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/interfaces/IInterchainGasPaymaster.sol": {
+        "keccak256": "0x3de1444709c70c46157062a12ba152281e9784b12c1d9af50919b3158d0edacb",
+        "urls": [
+          "bzz-raw://a74cd63fe911c43f70735df0eba197627502eceba8d4ec17d2291ede6781682e",
+          "dweb:/ipfs/QmNPx1V5RbauouoQ4CHR4GJEfA9SRsqTHbBnivej6STcaP"
+        ],
+        "license": "UNLICENSED"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/interfaces/IInterchainGasPaymaster.sol",
+    "id": 42125,
+    "exportedSymbols": {
+      "IInterchainGasPaymaster": [
+        42124
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:905:36",
+    "nodes": [
+      {
+        "id": 42093,
+        "nodeType": "PragmaDirective",
+        "src": "39:23:36",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".9"
+        ]
+      },
+      {
+        "id": 42124,
+        "nodeType": "ContractDefinition",
+        "src": "219:724:36",
+        "nodes": [
+          {
+            "id": 42103,
+            "nodeType": "EventDefinition",
+            "src": "526:110:36",
+            "nodes": [],
+            "anonymous": false,
+            "documentation": {
+              "id": 42095,
+              "nodeType": "StructuredDocumentation",
+              "src": "259:262:36",
+              "text": " @notice Emitted when a payment is made for a message's gas costs.\n @param messageId The ID of the message to pay for.\n @param gasAmount The amount of destination gas paid for.\n @param payment The amount of native tokens paid."
+            },
+            "eventSelector": "f715e66d2cd2a0179069dcda2a41a4da36a30e1aad12187fbb7c5d100afd621c",
+            "name": "GasPayment",
+            "nameLocation": "532:10:36",
+            "parameters": {
+              "id": 42102,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 42097,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "messageId",
+                  "nameLocation": "568:9:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42103,
+                  "src": "552:25:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 42096,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "552:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 42099,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "gasAmount",
+                  "nameLocation": "595:9:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42103,
+                  "src": "587:17:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 42098,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "587:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 42101,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "payment",
+                  "nameLocation": "622:7:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42103,
+                  "src": "614:15:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 42100,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "614:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "542:93:36"
+            }
+          },
+          {
+            "id": 42114,
+            "nodeType": "FunctionDefinition",
+            "src": "642:165:36",
+            "nodes": [],
+            "functionSelector": "11bf2c18",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "payForGas",
+            "nameLocation": "651:9:36",
+            "parameters": {
+              "id": 42112,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 42105,
+                  "mutability": "mutable",
+                  "name": "_messageId",
+                  "nameLocation": "678:10:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42114,
+                  "src": "670:18:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 42104,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "670:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 42107,
+                  "mutability": "mutable",
+                  "name": "_destinationDomain",
+                  "nameLocation": "705:18:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42114,
+                  "src": "698:25:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 42106,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "698:6:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 42109,
+                  "mutability": "mutable",
+                  "name": "_gasAmount",
+                  "nameLocation": "741:10:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42114,
+                  "src": "733:18:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 42108,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "733:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 42111,
+                  "mutability": "mutable",
+                  "name": "_refundAddress",
+                  "nameLocation": "769:14:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42114,
+                  "src": "761:22:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 42110,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "761:7:36",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "660:129:36"
+            },
+            "returnParameters": {
+              "id": 42113,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "806:0:36"
+            },
+            "scope": 42124,
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 42123,
+            "nodeType": "FunctionDefinition",
+            "src": "813:128:36",
+            "nodes": [],
+            "functionSelector": "a6929793",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "quoteGasPayment",
+            "nameLocation": "822:15:36",
+            "parameters": {
+              "id": 42119,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 42116,
+                  "mutability": "mutable",
+                  "name": "_destinationDomain",
+                  "nameLocation": "845:18:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42123,
+                  "src": "838:25:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 42115,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "838:6:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 42118,
+                  "mutability": "mutable",
+                  "name": "_gasAmount",
+                  "nameLocation": "873:10:36",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42123,
+                  "src": "865:18:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 42117,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "865:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "837:47:36"
+            },
+            "returnParameters": {
+              "id": 42122,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 42121,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42123,
+                  "src": "932:7:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 42120,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "932:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "931:9:36"
+            },
+            "scope": 42124,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IInterchainGasPaymaster",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 42094,
+          "nodeType": "StructuredDocumentation",
+          "src": "65:153:36",
+          "text": " @title IInterchainGasPaymaster\n @notice Manages payments on a source chain to cover gas costs of relaying\n messages to destination chains."
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          42124
+        ],
+        "name": "IInterchainGasPaymaster",
+        "nameLocation": "229:23:36",
+        "scope": 42125,
+        "usedErrors": [],
+        "usedEvents": [
+          42103
+        ]
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 36
+}

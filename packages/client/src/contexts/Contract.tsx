@@ -2,7 +2,9 @@ import React, { createContext, ReactNode, useContext, useEffect } from 'react';
 import { useChainId, useContractRead, useContractWrite } from 'wagmi';
 
 interface ContractContextType {
-  VaultContracts: any;
+  VaultContractsGoerli: any;
+  VaultContractsScroll: any;
+  VaultContractsMantle: any;
   isVaultLoading: boolean;
   isVaultSuccess: boolean;
   vaultData: any;
@@ -23,21 +25,44 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   const vaultFactoryAddress = Addresses as any;
 
   // Get data
-  const { data: VaultContracts, refetch: senderRefetch } = useContractRead({
-    address: vaultFactoryAddress[chainid].VaultFactory as `0x${string}`,
+  const { data: VaultContractsGoerli, refetch: senderRefetchGoerli } = useContractRead({
+    address: vaultFactoryAddress[5].VaultFactory as `0x${string}`,
     abi: VaultFactoryAbi.abi as any,
     functionName: 'getDeployedContracts',
+    chainId: 5,
+    cacheTime: 10_000,
+    staleTime: 10_000,
+  });
+
+  const { data: VaultContractsScroll, refetch: senderRefetchScroll } = useContractRead({
+    address: vaultFactoryAddress[534351].VaultFactory as `0x${string}`,
+    abi: VaultFactoryAbi.abi as any,
+    functionName: 'getDeployedContracts',
+    chainId: 534351,
+    cacheTime: 10_000,
+    staleTime: 10_000,
+  });
+
+  const { data: VaultContractsMantle, refetch: senderRefetchMantle } = useContractRead({
+    address: vaultFactoryAddress[5001].VaultFactory as `0x${string}`,
+    abi: VaultFactoryAbi.abi as any,
+    functionName: 'getDeployedContracts',
+    chainId: 5001,
     cacheTime: 10_000,
     staleTime: 10_000,
   });
 
   useEffect(() => {
     // Call fetchData immediately when the component renders
-    senderRefetch?.();
+    senderRefetchGoerli?.();
+    senderRefetchMantle?.();
+    senderRefetchScroll?.();
 
     // Set up an interval to call fetchData every 10 seconds
     const interval = setInterval(() => {
-      senderRefetch?.();
+      senderRefetchGoerli?.();
+      senderRefetchMantle?.();
+      senderRefetchScroll?.();
     }, 10000); // 10000 milliseconds = 10 seconds
 
     // Cleanup khi component unmount
@@ -62,7 +87,9 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   return (
     <ContractContext.Provider
       value={{
-        VaultContracts,
+        VaultContractsGoerli,
+        VaultContractsScroll,
+        VaultContractsMantle,
         vaultData,
         isVaultLoading,
         isVaultSuccess,

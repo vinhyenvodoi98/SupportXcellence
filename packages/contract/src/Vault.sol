@@ -5,10 +5,13 @@ import "@solmate/src/mixins/ERC4626.sol";
 import {ERC20} from "@solmate/src/tokens/ERC20.sol";
 import {FixedPointMathLib} from "@solmate/src/utils/FixedPointMathLib.sol";
 import { ISimpleFlashLoan } from "./interfaces/ISimpleFlashLoan.sol";
+import { ByteHasher } from "./helpers/ByteHasher.sol";
 
 contract Vault is ERC4626 {
     using FixedPointMathLib for uint256;
     uint256 private fee = 9; // 0.09% max 10000
+    // mailbox contract https://docs.hyperlane.xyz/docs/resources/addresses
+    mapping(address => bool) public mailbox;
 
     ERC20 erc20;
 
@@ -16,7 +19,20 @@ contract Vault is ERC4626 {
         erc20 = ERC20(payable(_erc20));
     }
 
+    modifier onlyMailbox() {
+        require(mailbox[msg.sender]);
+        _;
+    }
+
     receive() external payable virtual {}
+
+    function setMailbox(address _mailbox) public {
+        mailbox[_mailbox] = true;
+    }
+
+    function removeMailbox(address _mailbox) public {
+        mailbox[_mailbox] = false;
+    }
 
     function setFee(uint256 _fee) public virtual {
         fee = _fee;
@@ -42,5 +58,16 @@ contract Vault is ERC4626 {
         receiver.receiveFlashLoan(address(erc20), address(this), fee, amount);
         // repay the loan
         erc20.transferFrom(_receiverAddress, address(this), amount + (amount * fee / (10**4)));
+    }
+
+    function handle(
+        uint32 _origin,
+        bytes32 _sender,
+        bytes memory _body
+    ) public onlyMailbox{
+        address sender = ByteHasher.bytes32ToAddress(_sender);
+        // emit Received(_origin, sender, _body);
+        // PlaceStruct memory _place = abi.decode(_body,(PlaceStruct));
+        // _internalPlace(_place);
     }
 }

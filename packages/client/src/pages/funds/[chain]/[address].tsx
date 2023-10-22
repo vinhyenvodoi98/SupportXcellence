@@ -7,13 +7,15 @@ import Deposit from '@/components/Deposit';
 import FlashloanExample from '@/components/FlashLoanExample';
 import Layout from '@/components/layout/Layout';
 import Withdraw from '@/components/Withdraw';
+import { toast } from 'react-toastify';
 
-import ERC20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
-import VaultAbi from '../../../../contract/out/Vault.sol/Vault.json';
+import ERC20Abi from '../../../../../contract/out/ERC20.sol/ERC20.json';
+import VaultAbi from '../../../../../contract/out/Vault.sol/Vault.json';
+import { chainInfo } from '@/constant/chain';
 
 export default function Funds() {
   const router = useRouter();
-  const { address: VaultAddress } = router.query;
+  const { chain: vaultChainId ,address: VaultAddress } = router.query;
   const endTimestamp = new Date('2023-10-31T23:59:59').getTime();
   const [isVoting, setisVoting] = useState<boolean>(false);
   const [assetTokenAddress, setAssetTokenAddress] = useState('0x');
@@ -24,6 +26,7 @@ export default function Funds() {
 
   const tabs = ['Flashloan', 'Investments'];
   const [currentTab, setCurrentTab] = useState<number>(0);
+  const chains = chainInfo as any;
 
   // Read token
   const { data: token, refetch: refetchVault } = useContractReads({
@@ -32,32 +35,38 @@ export default function Funds() {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'name',
+        chainId: Number(vaultChainId as string)
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'symbol',
+        chainId: Number(vaultChainId as string)
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'totalAssets',
+        chainId: Number(vaultChainId as string)
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'asset',
+        chainId: Number(vaultChainId as string)
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'balanceOf',
         args: [address] as any,
+        chainId: Number(vaultChainId as string)
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'getFee',
+        chainId: Number(vaultChainId as string)
       },
     ],
   });
@@ -85,29 +94,34 @@ export default function Funds() {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'name',
+        chainId: Number(vaultChainId as string)
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'symbol',
+        chainId: Number(vaultChainId as string)
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'convertToAssets',
         args: [tokenBalance] as any,
+        chainId: Number(vaultChainId as string)
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'allowance',
-        args: [address, VaultAddress],
+        args: [address, VaultAddress] as any,
+        chainId: Number(vaultChainId as string)
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'balanceOf',
-        args: [address],
+        args: [address] as any,
+        chainId: Number(vaultChainId as string)
       },
     ],
   });
@@ -140,6 +154,14 @@ export default function Funds() {
     functionName: 'flashLoanSimple',
   });
 
+  useEffect(() => {
+    if (isFlashloanSuccess) toast.success(`Transaction has been created successfully: ${chains[vaultChainId as string].browserURL}/tx/${flashloanHash?.hash}`);
+  }, [isFlashloanSuccess]);
+
+  useEffect(() => {
+    if (isFlashloanLoading) toast.info('Transaction created');
+  }, [isFlashloanLoading]);
+
   const isWithdraw = useMemo(() => {
     if (token && !!token[4].result) return Number(token[4].result) > 0;
     return false;
@@ -147,8 +169,15 @@ export default function Funds() {
 
   return (
     <Layout>
-      <div className='card w-full border '>
+      <div className='card w-full border mt-4'>
         <div className='stats'>
+          <div className='stat'>
+            <div className='stat-title'>Chain</div>
+            <div className='stat-value text-primary'>
+              {chains[vaultChainId as string].name}
+            </div>
+            <div className='stat-desc'></div>
+          </div>
           <div className='stat'>
             <div className='stat-title'>Total Tokens</div>
             <div className='stat-value text-primary'>
@@ -157,6 +186,7 @@ export default function Funds() {
                 formatEther(BigInt(token[2].result.toString()))}{' '}
               {asset && asset[1].result}
             </div>
+            <div className='stat-title'>Token Address: {assetTokenAddress}</div>
             <div className='stat-desc'></div>
           </div>
           <div className='stat'>
@@ -166,7 +196,7 @@ export default function Funds() {
           </div>
           <div className='stat'>
             <div className='stat-title'>Interest</div>
-            <div className='stat-value'>86%</div>
+            <div className='stat-value'>6%</div>
             <div className='stat-desc text-secondary'></div>
           </div>
         </div>
@@ -255,25 +285,40 @@ export default function Funds() {
                 </div>
               )}
             </div>
-            <div className='border-l p-8'>
-              <div className='h-60'>
-                <h1 className='text-center mb-16'>Your Staked</h1>
-                {token &&
-                  asset &&
-                  token[4].result !== undefined &&
-                  asset[2].result !== undefined && (
-                    <div className='flex justify-center'>
-                      <h1 className='text-center'></h1>
-                      <h1 className='text-center'>
-                        {formatEther(BigInt(asset[2].result.toString()))}{' '}
-                        {asset[1].result}
-                      </h1>
-                      <p className='flex items-end px-2'>
-                        = {formatEther(BigInt(asset[2].result.toString()))}{' '}
-                        {token[1].result}
-                      </p>
-                    </div>
-                  )}
+            <div className='p-8'>
+              <div className='h-60 grid grid-rows-2'>
+                <div className='flex'>
+                  <h1 className='text-center'>Staked : </h1>
+                  {token &&
+                    asset &&
+                    token[4].result !== undefined &&
+                    token[2].result !== undefined &&
+                    asset[2].result !== undefined && (
+                      <div className='flex justify-center'>
+                        <h1 className='text-center'>
+                          {formatEther(BigInt(token[2].result.toString()))}{' '}
+                          {asset[1].result}
+                        </h1>
+                        <p className='flex px-2'>
+                          = {formatEther(BigInt(asset[2].result.toString()))}{' '}
+                          {token[1].result}
+                        </p>
+                      </div>
+                    )}
+                </div>
+                <div className='flex'>
+                  <h1 className='text-center'>Balance : </h1>
+                  {token &&
+                    asset &&
+                    asset[4].result !== undefined && (
+                      <div className='flex justify-center'>
+                        <h1 className='text-center'>
+                          {formatEther(BigInt(asset[4].result.toString()))}{' '}
+                          {token[1].result}
+                        </h1>
+                      </div>
+                    )}
+                </div>
               </div>
               <div className='grid grid-cols-2 gap-4'>
                 {asset &&
