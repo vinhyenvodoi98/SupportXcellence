@@ -8,6 +8,8 @@ import Layout from '@/components/layout/Layout';
 import { useContract } from '@/contexts/Contract';
 
 import Erc20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
+import Select from 'react-select';
+import Image from 'next/image';
 
 export default function CreateProject() {
   const { isVaultSuccess, isVaultLoading, createVault } = useContract();
@@ -93,13 +95,13 @@ export default function CreateProject() {
               <span className='label-text'>Token Address</span>
             </label>
             <input
-              // onChange={(e) => handleInput(e.target.value)}
+              onChange={(e) => handleInput(e.target.value)}
               type='text'
               placeholder='Type Token Address'
-              className='input input-bordered w-full rounded-md'
+              className='input input-bordered w-full rounded-md z-10'
             />
           </div>
-          {/* <div className='form-control w-full'>
+          <div className='form-control w-full'>
             <label className='label'>
               <span className='label-text'>Select chain</span>
             </label>
@@ -151,7 +153,7 @@ export default function CreateProject() {
                     onChange={(e) => setVaultTokenName(e.target.value)}
                     type='text'
                     placeholder={`Vault ${token[0].result}`}
-                    className='input input-bordered w-full rounded-md'
+                    className='input input-bordered w-full rounded-md z-10'
                   />
                 </div>
                 <div className='form-control w-full'>
@@ -162,12 +164,12 @@ export default function CreateProject() {
                     onChange={(e) => setVaultTokenSymbol(e.target.value)}
                     type='text'
                     placeholder={`v${token[1].result}`}
-                    className='input input-bordered w-full rounded-md'
+                    className='input input-bordered w-full rounded-md z-10'
                   />
                 </div>
               </div>
             )}
-          </div> */}
+          </div>
         </div>
         <div className='shadow-xl rounded-box border col-span-1 p-8 max-h-72 sticky top-24 bg-base-100'>
           <div className='grid grid-rows-3 gap-4'>

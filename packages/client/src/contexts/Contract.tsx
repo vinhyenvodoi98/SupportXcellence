@@ -61,7 +61,7 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
       address: vaultFactoryAddress[420].VaultFactory as `0x${string}`,
       abi: VaultFactoryAbi.abi as any,
       functionName: 'getDeployedContracts',
-      chainId: 5001,
+      chainId: 420,
       cacheTime: 10_000,
       staleTime: 10_000,
     });

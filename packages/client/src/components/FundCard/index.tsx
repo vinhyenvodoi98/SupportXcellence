@@ -5,7 +5,7 @@ import { useContractReads } from 'wagmi';
 import ERC20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
 import VaultAbi from '../../../../contract/out/Vault.sol/Vault.json';
 
-export default function FundCard({ vaultAddress }: { vaultAddress: string }) {
+export default function FundCard({ vaultAddress, chainId }: { vaultAddress: string, chainId: number }) {
   const [assetTokenAddress, setAssetTokenAddress] = useState('0x');
   // Read token
   const { data: token } = useContractReads({
@@ -14,21 +14,25 @@ export default function FundCard({ vaultAddress }: { vaultAddress: string }) {
         address: vaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'name',
+        chainId: chainId
       },
       {
         address: vaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'symbol',
+        chainId: chainId
       },
       {
         address: vaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'totalAssets',
+        chainId: chainId
       },
       {
         address: vaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'asset',
+        chainId: chainId
       },
     ],
   });
@@ -44,11 +48,13 @@ export default function FundCard({ vaultAddress }: { vaultAddress: string }) {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'name',
+        chainId: chainId
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'symbol',
+        chainId: chainId
       },
     ],
   });
