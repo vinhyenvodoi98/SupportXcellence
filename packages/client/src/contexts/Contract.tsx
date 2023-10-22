@@ -25,32 +25,35 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
   const vaultFactoryAddress = Addresses as any;
 
   // Get data
-  const { data: VaultContractsGoerli, refetch: senderRefetchGoerli } = useContractRead({
-    address: vaultFactoryAddress[5].VaultFactory as `0x${string}`,
-    abi: VaultFactoryAbi.abi as any,
-    functionName: 'getDeployedContracts',
-    chainId: 5,
-    cacheTime: 10_000,
-    staleTime: 10_000,
-  });
+  const { data: VaultContractsGoerli, refetch: senderRefetchGoerli } =
+    useContractRead({
+      address: vaultFactoryAddress[5].VaultFactory as `0x${string}`,
+      abi: VaultFactoryAbi.abi as any,
+      functionName: 'getDeployedContracts',
+      chainId: 5,
+      cacheTime: 10_000,
+      staleTime: 10_000,
+    });
 
-  const { data: VaultContractsScroll, refetch: senderRefetchScroll } = useContractRead({
-    address: vaultFactoryAddress[534351].VaultFactory as `0x${string}`,
-    abi: VaultFactoryAbi.abi as any,
-    functionName: 'getDeployedContracts',
-    chainId: 534351,
-    cacheTime: 10_000,
-    staleTime: 10_000,
-  });
+  const { data: VaultContractsScroll, refetch: senderRefetchScroll } =
+    useContractRead({
+      address: vaultFactoryAddress[534351].VaultFactory as `0x${string}`,
+      abi: VaultFactoryAbi.abi as any,
+      functionName: 'getDeployedContracts',
+      chainId: 534351,
+      cacheTime: 10_000,
+      staleTime: 10_000,
+    });
 
-  const { data: VaultContractsMantle, refetch: senderRefetchMantle } = useContractRead({
-    address: vaultFactoryAddress[5001].VaultFactory as `0x${string}`,
-    abi: VaultFactoryAbi.abi as any,
-    functionName: 'getDeployedContracts',
-    chainId: 5001,
-    cacheTime: 10_000,
-    staleTime: 10_000,
-  });
+  const { data: VaultContractsMantle, refetch: senderRefetchMantle } =
+    useContractRead({
+      address: vaultFactoryAddress[5001].VaultFactory as `0x${string}`,
+      abi: VaultFactoryAbi.abi as any,
+      functionName: 'getDeployedContracts',
+      chainId: 5001,
+      cacheTime: 10_000,
+      staleTime: 10_000,
+    });
 
   useEffect(() => {
     // Call fetchData immediately when the component renders

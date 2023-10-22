@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
 import { formatEther, parseEther } from 'viem';
 import { useAccount, useContractReads, useContractWrite } from 'wagmi';
 
@@ -7,15 +8,15 @@ import Deposit from '@/components/Deposit';
 import FlashloanExample from '@/components/FlashLoanExample';
 import Layout from '@/components/layout/Layout';
 import Withdraw from '@/components/Withdraw';
-import { toast } from 'react-toastify';
+
+import { chainInfo } from '@/constant/chain';
 
 import ERC20Abi from '../../../../../contract/out/ERC20.sol/ERC20.json';
 import VaultAbi from '../../../../../contract/out/Vault.sol/Vault.json';
-import { chainInfo } from '@/constant/chain';
 
 export default function Funds() {
   const router = useRouter();
-  const { chain: vaultChainId ,address: VaultAddress } = router.query;
+  const { chain: vaultChainId, address: VaultAddress } = router.query;
   const endTimestamp = new Date('2023-10-31T23:59:59').getTime();
   const [isVoting, setisVoting] = useState<boolean>(false);
   const [assetTokenAddress, setAssetTokenAddress] = useState('0x');
@@ -35,38 +36,38 @@ export default function Funds() {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'name',
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'symbol',
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'totalAssets',
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'asset',
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'balanceOf',
         args: [address] as any,
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'getFee',
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
     ],
   });
@@ -94,34 +95,34 @@ export default function Funds() {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'name',
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'symbol',
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: VaultAddress as `0x${string}`,
         abi: VaultAbi.abi as any,
         functionName: 'convertToAssets',
         args: [tokenBalance] as any,
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'allowance',
         args: [address, VaultAddress] as any,
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
       {
         address: assetTokenAddress as `0x${string}`,
         abi: ERC20Abi.abi as any,
         functionName: 'balanceOf',
         args: [address] as any,
-        chainId: Number(vaultChainId as string)
+        chainId: Number(vaultChainId as string),
       },
     ],
   });
@@ -155,7 +156,12 @@ export default function Funds() {
   });
 
   useEffect(() => {
-    if (isFlashloanSuccess) toast.success(`Transaction has been created successfully: ${chains[vaultChainId as string].browserURL}/tx/${flashloanHash?.hash}`);
+    if (isFlashloanSuccess)
+      toast.success(
+        `Transaction has been created successfully: ${
+          chains[vaultChainId as string].browserURL
+        }/tx/${flashloanHash?.hash}`
+      );
   }, [isFlashloanSuccess]);
 
   useEffect(() => {
@@ -174,7 +180,7 @@ export default function Funds() {
           <div className='stat'>
             <div className='stat-title'>Chain</div>
             <div className='stat-value text-primary'>
-              {chains[vaultChainId as string].name}
+              {chains && chains[vaultChainId as string]?.name}
             </div>
             <div className='stat-desc'></div>
           </div>
@@ -217,7 +223,7 @@ export default function Funds() {
         <div className='border-b w-full'></div>
       </div>
 
-      <div className='pb-8 grid grid-cols-4 gap-4 glass rounded-e-lg rounded-bl-lg'>
+      <div className='pb-8 grid grid-cols-4 gap-4 glass bg-white/70 rounded-e-lg rounded-bl-lg'>
         {currentTab === 0 ? (
           <div className='card w-full col-span-4 grid grid-cols-3'>
             <div className='col-span-2 h-m-96 p-8'>
@@ -308,16 +314,14 @@ export default function Funds() {
                 </div>
                 <div className='flex'>
                   <h1 className='text-center'>Balance : </h1>
-                  {token &&
-                    asset &&
-                    asset[4].result !== undefined && (
-                      <div className='flex justify-center'>
-                        <h1 className='text-center'>
-                          {formatEther(BigInt(asset[4].result.toString()))}{' '}
-                          {token[1].result}
-                        </h1>
-                      </div>
-                    )}
+                  {token && asset && asset[4].result !== undefined && (
+                    <div className='flex justify-center'>
+                      <h1 className='text-center'>
+                        {formatEther(BigInt(asset[4].result.toString()))}{' '}
+                        {token[1].result}
+                      </h1>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className='grid grid-cols-2 gap-4'>

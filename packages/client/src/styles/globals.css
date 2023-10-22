@@ -90,6 +90,10 @@
   .min-h-main {
     @apply min-h-[calc(100vh-56px)];
   }
+
+  .top-main {
+    @apply top-[-114px];
+  }
 }
 
 .background-animate {

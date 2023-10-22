@@ -17,7 +17,7 @@ export default function CreateProject() {
   const [vaultTokenName, setVaultTokenName] = useState<string>('');
   const [vaultTokenSymbol, setVaultTokenSymbol] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState<any>(null);
-  const chainId = useChainId()
+  const chainId = useChainId();
 
   const options = [
     { value: '5', label: 'Goelri' },
@@ -25,7 +25,10 @@ export default function CreateProject() {
     { value: '5001', label: 'Mantle Test' },
   ];
 
-  const defaultOption = useMemo(() => options.filter(option => option.value === chainId.toString())[0], [options, chainId])
+  const defaultOption = useMemo(
+    () => options.filter((option) => option.value === chainId.toString())[0],
+    [options, chainId]
+  );
 
   // Read token
   const { data: token } = useContractReads({
@@ -74,7 +77,8 @@ export default function CreateProject() {
   }, [token]);
 
   useEffect(() => {
-    if (isVaultSuccess) toast.success('Transaction has been created successfully');
+    if (isVaultSuccess)
+      toast.success('Transaction has been created successfully');
   }, [isVaultSuccess]);
 
   useEffect(() => {

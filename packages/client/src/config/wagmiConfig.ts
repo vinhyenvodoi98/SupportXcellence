@@ -1,10 +1,6 @@
 import { getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig } from 'wagmi';
-import {
-  goerli,
-  mantleTestnet,
-  scrollSepolia,
-} from 'wagmi/chains';
+import { goerli, mantleTestnet, scrollSepolia } from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
 const { chains, publicClient } = configureChains(

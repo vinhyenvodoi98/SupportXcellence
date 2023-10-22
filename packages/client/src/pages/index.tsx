@@ -6,7 +6,8 @@ import Layout from '@/components/layout/Layout';
 import { useContract } from '@/contexts/Contract';
 
 export default function HomePage() {
-  const { VaultContractsGoerli, VaultContractsScroll, VaultContractsMantle } = useContract();
+  const { VaultContractsGoerli, VaultContractsScroll, VaultContractsMantle } =
+    useContract();
   return (
     <Layout>
       <div className='pt-12'>
@@ -18,7 +19,9 @@ export default function HomePage() {
           />
         </div>
         <div className='flex'>
-          <h1 className='tab tab-lg tab-lifted tab-active w-60'>Vaults Scroll</h1>
+          <h1 className='tab tab-lg tab-lifted tab-active w-60'>
+            Scroll Sepolia
+          </h1>
           <div className='border-b w-full'></div>
         </div>
         <div className='grid gap-8 p-8 glass rounded-e-lg rounded-bl-lg mb-4'>
@@ -30,11 +33,13 @@ export default function HomePage() {
             ))}
         </div>
         <div className='flex'>
-          <h1 className='tab tab-lg tab-lifted tab-active w-60'>Vaults Mantle</h1>
+          <h1 className='tab tab-lg tab-lifted tab-active w-60'>
+            Mantle Testnet
+          </h1>
           <div className='border-b w-full'></div>
         </div>
         <div className='grid gap-8 p-8 glass rounded-e-lg rounded-bl-lg mb-4'>
-        {VaultContractsMantle &&
+          {VaultContractsMantle &&
             VaultContractsMantle.toReversed().map((funds: string) => (
               <Link href={`/funds/5001/${funds}`} key={funds}>
                 <FundCard vaultAddress={funds} />
@@ -42,11 +47,11 @@ export default function HomePage() {
             ))}
         </div>
         <div className='flex'>
-          <h1 className='tab tab-lg tab-lifted tab-active w-60'>Vaults Goerli</h1>
+          <h1 className='tab tab-lg tab-lifted tab-active w-60'>Goerli</h1>
           <div className='border-b w-full'></div>
         </div>
         <div className='grid gap-8 p-8 glass rounded-e-lg rounded-bl-lg'>
-        {VaultContractsGoerli &&
+          {VaultContractsGoerli &&
             VaultContractsGoerli.toReversed().map((funds: string) => (
               <Link href={`/funds/534351/${funds}`} key={funds}>
                 <FundCard vaultAddress={funds} />

@@ -1,9 +1,10 @@
-import { chainInfo } from '@/constant/chain';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import { formatEther, parseEther } from 'viem';
 import { useAccount, useContractWrite } from 'wagmi';
+
+import { chainInfo } from '@/constant/chain';
 
 import ERC20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
 import VaultAbi from '../../../../contract/out/Vault.sol/Vault.json';
@@ -53,12 +54,20 @@ const Deposit = ({
 
   useEffect(() => {
     if (isDepositSuccess)
-      toast.success(`Transaction has been created successfully: ${chains[vaultChainId as string].browserURL}/tx/${depositHash?.hash}`);
+      toast.success(
+        `Transaction has been created successfully: ${
+          chains[vaultChainId as string].browserURL
+        }/tx/${depositHash?.hash}`
+      );
   }, [isDepositSuccess]);
 
   useEffect(() => {
     if (isApproveLoading)
-      toast.success(`Transaction has been created successfully: ${chains[vaultChainId as string].browserURL}/tx/${approveHash?.hash}`);
+      toast.success(
+        `Transaction has been created successfully: ${
+          chains[vaultChainId as string].browserURL
+        }/tx/${approveHash?.hash}`
+      );
   }, [isApproveSuccess]);
 
   useEffect(() => {
