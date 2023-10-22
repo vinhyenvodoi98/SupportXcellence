@@ -8,38 +8,31 @@ import { chainInfo } from '@/constant/chain';
 
 import ERC20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
 import VaultAbi from '../../../../contract/out/Vault.sol/Vault.json';
+import UserContractSenderAbi from '../../../../contract/out/UserContractSender.sol/UserContractSender.json';
 
-interface DepositInterface {
-  allowance: number;
+interface MDepositInterface {
+  userContractSender: string;
+  fee: any;
   tokenAddress: string;
   vaultAddress: string;
+  userAddress: string;
   symbol: any;
   balance: any;
 }
 
-const Deposit = ({
-  allowance,
+const MDeposit = ({
+  userContractSender,
+  fee,
   vaultAddress,
   tokenAddress,
+  userAddress,
   symbol,
   balance,
-}: DepositInterface) => {
+}: MDepositInterface) => {
   const [amount, setAmount] = useState(0);
-  const { address } = useAccount();
   const router = useRouter();
   const { chain: vaultChainId } = router.query;
   const chains = chainInfo as any;
-
-  const {
-    data: approveHash,
-    isLoading: isApproveLoading,
-    isSuccess: isApproveSuccess,
-    write: triggerApprove,
-  } = useContractWrite({
-    address: tokenAddress as `0x${string}`,
-    abi: ERC20Abi.abi as any,
-    functionName: 'approve',
-  });
 
   const {
     data: depositHash,
@@ -47,9 +40,9 @@ const Deposit = ({
     isSuccess: isDepositSuccess,
     write: triggerDeposit,
   } = useContractWrite({
-    address: vaultAddress as `0x${string}`,
-    abi: VaultAbi.abi as any,
-    functionName: 'deposit',
+    address: userContractSender as `0x${string}`,
+    abi: UserContractSenderAbi.abi as any,
+    functionName: 'vaultInteract',
   });
 
   useEffect(() => {
@@ -62,34 +55,20 @@ const Deposit = ({
   }, [isDepositSuccess]);
 
   useEffect(() => {
-    if (isApproveLoading)
-      toast.success(
-        `Transaction has been created successfully: ${
-          chains[vaultChainId as string].browserURL
-        }/tx/${approveHash?.hash}`
-      );
-  }, [isApproveSuccess]);
-
-  useEffect(() => {
-    if (isDepositLoading || isApproveLoading) toast.info('Transaction created');
-  }, [isDepositLoading, isApproveLoading]);
+    if (isDepositLoading) toast.info('Transaction created');
+  }, [isDepositLoading]);
 
   const handle = () => {
-    if (isApproved) {
-      triggerDeposit({
-        args: [parseEther(amount.toString()), address as string],
-      });
-    } else {
-      triggerApprove({
-        args: [vaultAddress, parseEther(amount.toString())],
-      });
-    }
+    triggerDeposit({
+      args: [{
+        functionName: 0,
+        amount: parseEther(amount.toString()),
+        vaultAddress,
+        assetAddress: tokenAddress,
+      }, userAddress as string],
+      value: fee
+    });
   };
-
-  const isApproved = useMemo(() => {
-    if (Number(allowance) === 0) return false
-    return Number(allowance) >= Number(parseEther(amount.toString()));
-  }, [amount, allowance]);
 
   return (
     <>
@@ -98,13 +77,13 @@ const Deposit = ({
         onClick={() =>
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          document.getElementById('deposit').showModal()
+          document.getElementById('mdeposit').showModal()
         }
       >
         Deposit
       </button>
 
-      <dialog id='deposit' className='modal'>
+      <dialog id='mdeposit' className='modal'>
         <div className='modal-box'>
           <form method='dialog'>
             <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
@@ -112,7 +91,7 @@ const Deposit = ({
             </button>
           </form>
           <h3 className='font-bold text-lg'>
-            {isApproved ? 'Deposit' : 'Approve'}
+            Deposit
           </h3>
           <label className='label flex justify-between'>
             <span className='label-text'>Amount: </span>
@@ -132,7 +111,7 @@ const Deposit = ({
 
           <div className='flex justify-end my-4'>
             <button className='btn btn-success' onClick={() => handle()}>
-              {isApproved ? 'Deposit' : 'Approve'}
+              Deposit
             </button>
           </div>
         </div>
@@ -141,4 +120,4 @@ const Deposit = ({
   );
 };
 
-export default Deposit;
+export default MDeposit;

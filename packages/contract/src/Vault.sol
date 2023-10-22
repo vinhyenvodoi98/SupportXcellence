@@ -5,7 +5,6 @@ import "@solmate/src/mixins/ERC4626.sol";
 import {ERC20} from "@solmate/src/tokens/ERC20.sol";
 import {FixedPointMathLib} from "@solmate/src/utils/FixedPointMathLib.sol";
 import { ISimpleFlashLoan } from "./interfaces/ISimpleFlashLoan.sol";
-import { ByteHasher } from "./helpers/ByteHasher.sol";
 
 contract Vault is ERC4626 {
     using FixedPointMathLib for uint256;
@@ -59,15 +58,4 @@ contract Vault is ERC4626 {
         // repay the loan
         erc20.transferFrom(_receiverAddress, address(this), amount + (amount * fee / (10**4)));
     }
-
-    // function handle(
-    //     uint32 _origin,
-    //     bytes32 _sender,
-    //     bytes memory _body
-    // ) public onlyMailbox{
-    //     address sender = ByteHasher.bytes32ToAddress(_sender);
-    //     // emit Received(_origin, sender, _body);
-    //     // PlaceStruct memory _place = abi.decode(_body,(PlaceStruct));
-    //     // _internalPlace(_place);
-    // }
 }

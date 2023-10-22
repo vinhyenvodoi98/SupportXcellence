@@ -2,11 +2,19 @@ import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import { formatEther, parseEther } from 'viem';
-import { useAccount, useContractReads, useContractWrite } from 'wagmi';
+import {
+  useAccount,
+  useChainId,
+  useContractReads,
+  useContractWrite,
+} from 'wagmi';
 
+import CountDown from '@/components/CountDown';
 import Deposit from '@/components/Deposit';
 import FlashloanExample from '@/components/FlashLoanExample';
 import Layout from '@/components/layout/Layout';
+import MultiDeposit from '@/components/MultiDeposit';
+import VoteComponent from '@/components/Selection';
 import Withdraw from '@/components/Withdraw';
 
 import { chainInfo } from '@/constant/chain';
@@ -24,10 +32,12 @@ export default function Funds() {
   const { address } = useAccount();
   const [flashloadAddress, setFlashloadAddress] = useState<string>('');
   const [amount, setAmount] = useState<number>(0); // reuse for flashloand and deposit
+  const [multiChainAmount, setMultiChainAmount] = useState<number>(0)
 
   const tabs = ['Flashloan', 'Investments'];
   const [currentTab, setCurrentTab] = useState<number>(0);
   const chains = chainInfo as any;
+  const chainId = useChainId();
 
   // Read token
   const { data: token, refetch: refetchVault } = useContractReads({
@@ -169,9 +179,13 @@ export default function Funds() {
   }, [isFlashloanLoading]);
 
   const isWithdraw = useMemo(() => {
-    if (token && !!token[4].result) return Number(token[4].result) > 0;
+    if ((token && !!token[4].result && Number(token[4].result) > 0) || multiChainAmount > 0) return true;
     return false;
-  }, [token]);
+  }, [token, multiChainAmount]);
+
+  const isMultiChain = useMemo(() => {
+    return Number(vaultChainId) !== chainId;
+  }, [vaultChainId, chainId]);
 
   return (
     <Layout>
@@ -223,7 +237,7 @@ export default function Funds() {
         <div className='border-b w-full'></div>
       </div>
 
-      <div className='pb-8 grid grid-cols-4 gap-4 glass bg-white/70 rounded-e-lg rounded-bl-lg'>
+      <div className='grid grid-cols-4 gap-4 glass bg-white/70 rounded-e-lg rounded-bl-lg min-h-[500px]'>
         {currentTab === 0 ? (
           <div className='card w-full col-span-4 grid grid-cols-3'>
             <div className='col-span-2 h-m-96 p-8'>
@@ -276,82 +290,97 @@ export default function Funds() {
         ) : (
           <div className='card w-full col-span-4 grid grid-cols-3'>
             <div className='col-span-2 h-m-96 p-8'>
-              {isVoting ? (
-                <button className='btn'>Calling for a Vote</button>
+              {isWithdraw ? (
+                <div>
+                  {isVoting ? (
+                    <button className='btn'>Calling for a Vote</button>
+                  ) : (
+                    <div className='flex flex-col justify-between h-full'>
+                      <div className='flex justify-between'>
+                        <h1>Update fee</h1>
+                        <CountDown endTimestamp={endTimestamp} />
+                      </div>
+                      <VoteComponent />
+                      <div className='flex justify-end'>
+                        <button className='btn w-32'>Submit</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               ) : (
-                <div className='flex flex-col justify-between h-full'>
-                  {/* <div className='flex justify-between'>
-                    <h1>Title</h1>
-                    <CountDown endTimestamp={endTimestamp} />
-                  </div>
-                  <VoteComponent />
-                  <div className='flex justify-end'>
-                    <button className='btn w-32'>Submit</button>
-                  </div> */}
+                <div>
+                  <h1>Join the vault to get voting rights</h1>
                 </div>
               )}
             </div>
-            <div className='p-8'>
-              <div className='h-60 grid grid-rows-2'>
-                <div className='flex'>
-                  <h1 className='text-center'>Staked : </h1>
-                  {token &&
-                    asset &&
-                    token[4].result !== undefined &&
-                    token[2].result !== undefined &&
-                    asset[2].result !== undefined && (
-                      <div className='flex justify-center'>
+            {isMultiChain ? (
+              <MultiDeposit vaultAddress={VaultAddress as string} assetTokenAddress={assetTokenAddress} setMultiChainAmount={setMultiChainAmount}/>
+            ) : (
+              <div className='p-8 flex flex-col justify-between'>
+                <div className='h-72'>
+                  <div className='grid grid-rows-2 h-full'>
+                    <h1 className=''>Vault </h1>
+                    <div className='grid grid-cols-2'>
+                    {token &&
+                      asset &&
+                      token[4].result !== undefined &&
+                      token[2].result !== undefined &&
+                      asset[2].result !== undefined && (
+                        <div className='flex flex-col justify-center'>
+                          Staked:
+                          <div className='flex justify-center'>
+                            <h1 className='text-center'>
+                              {formatEther(BigInt(token[2].result.toString()))}{' '}
+                              {asset[1].result}
+                            </h1>
+                            <p className='flex px-2'>
+                              = {formatEther(BigInt(asset[2].result.toString()))}{' '}
+                              {token[1].result}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    {token && asset && asset[4].result !== undefined && (
+                      <div className='flex flex-col justify-center'>
+                        Balance:
                         <h1 className='text-center'>
-                          {formatEther(BigInt(token[2].result.toString()))}{' '}
-                          {asset[1].result}
-                        </h1>
-                        <p className='flex px-2'>
-                          = {formatEther(BigInt(asset[2].result.toString()))}{' '}
+                          {formatEther(BigInt(asset[4].result.toString()))}{' '}
                           {token[1].result}
-                        </p>
+                        </h1>
                       </div>
                     )}
-                </div>
-                <div className='flex'>
-                  <h1 className='text-center'>Balance : </h1>
-                  {token && asset && asset[4].result !== undefined && (
-                    <div className='flex justify-center'>
-                      <h1 className='text-center'>
-                        {formatEther(BigInt(asset[4].result.toString()))}{' '}
-                        {token[1].result}
-                      </h1>
                     </div>
+                  </div>
+                </div>
+                <div className='grid grid-cols-2 gap-4'>
+                  {asset &&
+                    token &&
+                    asset[3].result != undefined &&
+                    asset[4].result != undefined && (
+                      <div
+                        className={`${
+                          !isWithdraw && 'col-span-2'
+                        } grid grid-cols-1`}
+                      >
+                        <Deposit
+                          allowance={Number(asset[3].result)}
+                          vaultAddress={VaultAddress as string}
+                          tokenAddress={assetTokenAddress}
+                          symbol={asset && asset[1].result}
+                          balance={asset[4].result}
+                        />
+                      </div>
+                    )}
+                  {isWithdraw && (
+                    <Withdraw
+                      vaultAddress={VaultAddress as string}
+                      symbol={asset && asset[1].result}
+                      convertToAssets={asset && asset[2].result}
+                    />
                   )}
                 </div>
               </div>
-              <div className='grid grid-cols-2 gap-4'>
-                {asset &&
-                  token &&
-                  asset[3].result != undefined &&
-                  asset[4].result != undefined && (
-                    <div
-                      className={`${
-                        !isWithdraw && 'col-span-2'
-                      } grid grid-cols-1`}
-                    >
-                      <Deposit
-                        allowance={Number(asset[3].result)}
-                        vaultAddress={VaultAddress as string}
-                        tokenAddress={assetTokenAddress}
-                        symbol={asset && asset[1].result}
-                        balance={asset[4].result}
-                      />
-                    </div>
-                  )}
-                {isWithdraw && (
-                  <Withdraw
-                    vaultAddress={VaultAddress as string}
-                    symbol={asset && asset[1].result}
-                    convertToAssets={asset && asset[2].result}
-                  />
-                )}
-              </div>
-            </div>
+            )}
           </div>
         )}
       </div>

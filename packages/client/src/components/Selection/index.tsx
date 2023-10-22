@@ -8,14 +8,14 @@ interface VoteOption {
 
 const VoteComponent: React.FC = () => {
   const [voteOptions, setVoteOptions] = useState<VoteOption[]>([
-    { id: 1, label: 'Option 1', count: 0 },
-    { id: 2, label: 'Option 2', count: 0 },
-    { id: 3, label: 'Option 3', count: 0 },
-    { id: 4, label: 'Option 4', count: 0 },
-    { id: 5, label: 'Option 5', count: 0 },
+    { id: 1, label: '0.05', count: 2 },
+    { id: 2, label: '0.06', count: 1 },
+    { id: 3, label: '0.07', count: 1 },
+    { id: 4, label: '0.08', count: 0 },
+    { id: 5, label: '0.1', count: 0 },
   ]);
 
-  const [totalVotes, setTotalVotes] = useState(0);
+  const [totalVotes, setTotalVotes] = useState(4);
 
   const handleVote = (optionId: number) => {
     const updatedOptions = voteOptions.map((option) =>
@@ -34,7 +34,7 @@ const VoteComponent: React.FC = () => {
         <div key={option.id} className='flex items-center mb-2'>
           <button
             onClick={() => handleVote(option.id)}
-            className='p-2 bg-blue-500 text-white rounded mr-2'
+            className='p-2 bg-blue-500 text-white rounded mr-2 w-32'
           >
             {option.label}
           </button>

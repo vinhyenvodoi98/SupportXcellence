@@ -44,7 +44,7 @@ export default function Profile() {
         ) : (
           funds.map((fund, index) => (
             <Link href={`/funds/${index}`} key={index}>
-              <FundCard vaultAddress='0x' />
+              <FundCard vaultAddress='0x' chainId={5}/>
             </Link>
           ))
         )}

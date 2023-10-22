@@ -26,8 +26,8 @@ contract DeployScript is Script {
     address OptimismGoerliMailBox = 0xCC737a94FecaeC165AbCf12dED095BB13F037685;
     vm.createSelectFork(vm.rpcUrl("optimism-goerli"));
     vm.startBroadcast(privateKey);
-    address UserFactoryScroll = address(new UserFactory(OptimismGoerliMailBox));
-    console.log(UserFactoryScroll);
+    address UserFactoryGoerli = address(new UserFactory(OptimismGoerliMailBox));
+    console.log(UserFactoryGoerli);
     uint32 targetChain = 420; // optimism goerli
 
     vm.stopBroadcast();

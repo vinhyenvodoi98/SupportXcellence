@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
+import Select from 'react-select';
 import { toast } from 'react-toastify';
 import { isAddress } from 'viem';
 import { useChainId, useContractReads } from 'wagmi';
@@ -8,8 +10,6 @@ import Layout from '@/components/layout/Layout';
 import { useContract } from '@/contexts/Contract';
 
 import Erc20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
-import Select from 'react-select';
-import Image from 'next/image';
 
 export default function CreateProject() {
   const { isVaultSuccess, isVaultLoading, createVault } = useContract();

@@ -10,19 +10,22 @@
   },
   "ast": {
     "absolutePath": "src/helpers/Structs.sol",
-    "id": 39749,
+    "id": 41504,
     "exportedSymbols": {
       "CreateUserStruct": [
-        39748
+        41494
+      ],
+      "DepositWithdrawStruct": [
+        41503
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "32:99:19",
+    "src": "32:253:26",
     "nodes": [
       {
-        "id": 39745,
+        "id": 41491,
         "nodeType": "PragmaDirective",
-        "src": "32:23:19",
+        "src": "32:23:26",
         "nodes": [],
         "literals": [
           "solidity",
@@ -32,21 +35,21 @@
         ]
       },
       {
-        "id": 39748,
+        "id": 41494,
         "nodeType": "StructDefinition",
-        "src": "87:44:19",
+        "src": "87:44:26",
         "nodes": [],
         "canonicalName": "CreateUserStruct",
         "members": [
           {
             "constant": false,
-            "id": 39747,
+            "id": 41493,
             "mutability": "mutable",
             "name": "owner",
-            "nameLocation": "123:5:19",
+            "nameLocation": "123:5:26",
             "nodeType": "VariableDeclaration",
-            "scope": 39748,
-            "src": "115:13:19",
+            "scope": 41494,
+            "src": "115:13:26",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -54,10 +57,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 39746,
+              "id": 41492,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "115:7:19",
+              "src": "115:7:26",
               "stateMutability": "nonpayable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
@@ -68,12 +71,135 @@
           }
         ],
         "name": "CreateUserStruct",
-        "nameLocation": "94:16:19",
-        "scope": 39749,
+        "nameLocation": "94:16:26",
+        "scope": 41504,
+        "visibility": "public"
+      },
+      {
+        "id": 41503,
+        "nodeType": "StructDefinition",
+        "src": "133:151:26",
+        "nodes": [],
+        "canonicalName": "DepositWithdrawStruct",
+        "members": [
+          {
+            "constant": false,
+            "id": 41496,
+            "mutability": "mutable",
+            "name": "functionName",
+            "nameLocation": "174:12:26",
+            "nodeType": "VariableDeclaration",
+            "scope": 41503,
+            "src": "166:20:26",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 41495,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "166:7:26",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 41498,
+            "mutability": "mutable",
+            "name": "amount",
+            "nameLocation": "227:6:26",
+            "nodeType": "VariableDeclaration",
+            "scope": 41503,
+            "src": "219:14:26",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 41497,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "219:7:26",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 41500,
+            "mutability": "mutable",
+            "name": "vaultAddress",
+            "nameLocation": "245:12:26",
+            "nodeType": "VariableDeclaration",
+            "scope": 41503,
+            "src": "237:20:26",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 41499,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "237:7:26",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 41502,
+            "mutability": "mutable",
+            "name": "assetAddress",
+            "nameLocation": "269:12:26",
+            "nodeType": "VariableDeclaration",
+            "scope": 41503,
+            "src": "261:20:26",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 41501,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "261:7:26",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "DepositWithdrawStruct",
+        "nameLocation": "140:21:26",
+        "scope": 41504,
         "visibility": "public"
       }
     ],
     "license": "MIT"
   },
-  "id": 19
+  "id": 26
 }

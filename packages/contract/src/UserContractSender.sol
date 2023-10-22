@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.20;
 
-import { CreateUserStruct } from './helpers/Structs.sol';
+import { CreateUserStruct, DepositWithdrawStruct } from './helpers/Structs.sol';
 import { IInterchainGasPaymaster } from "./interfaces/IInterchainGasPaymaster.sol";
 import { IMailbox } from "./interfaces/IMailbox.sol";
 import { ByteHasher } from "./helpers/ByteHasher.sol";
@@ -27,6 +27,17 @@ contract UserContractSender {
 
     function createUserContract(CreateUserStruct calldata _owner, address recipient) external payable {
         bytes memory encodedData=structToBytesEncoded(_owner);
+        bytes32 messageId = IMailbox(mailbox).dispatch(targetChain, ByteHasher.addressToBytes32(recipient), encodedData);
+        igp.payForGas{value: msg.value}(
+            messageId, // The ID of the message that was just dispatched
+            targetChain, // The destination domain of the message
+            550000,
+            msg.sender // refunds go to msg.sender, who paid the msg.value
+        );
+    }
+
+    function vaultInteract(DepositWithdrawStruct calldata _data, address recipient) external payable {
+        bytes memory encodedData = abi.encode(_data);
         bytes32 messageId = IMailbox(mailbox).dispatch(targetChain, ByteHasher.addressToBytes32(recipient), encodedData);
         igp.payForGas{value: msg.value}(
             messageId, // The ID of the message that was just dispatched

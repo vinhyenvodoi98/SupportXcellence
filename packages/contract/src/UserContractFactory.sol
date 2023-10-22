@@ -9,6 +9,7 @@ contract UserFactory {
     using ByteHasher for bytes;
     mapping(address => address) public user;
     mapping(address => bool) public isHaveUser;
+    uint256 public test;
     address public mailbox;
 
     // Event
@@ -36,5 +37,6 @@ contract UserFactory {
         CreateUserStruct memory data = abi.decode(_body,(CreateUserStruct));
         User newContract = new User(mailbox, data.owner);
         user[data.owner] = address(newContract);
+        isHaveUser[data.owner] = true;
     }
 }
