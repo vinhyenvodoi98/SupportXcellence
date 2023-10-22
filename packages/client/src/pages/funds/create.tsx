@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
-import Select from 'react-select';
 import { toast } from 'react-toastify';
 import { isAddress } from 'viem';
 import { useChainId, useContractReads } from 'wagmi';
@@ -23,6 +21,7 @@ export default function CreateProject() {
     { value: '5', label: 'Goelri' },
     { value: '534351', label: 'Scroll Sepolia' },
     { value: '5001', label: 'Mantle Test' },
+    { value: '420', label: 'Optimism Goerli' },
   ];
 
   const defaultOption = useMemo(
@@ -94,13 +93,13 @@ export default function CreateProject() {
               <span className='label-text'>Token Address</span>
             </label>
             <input
-              onChange={(e) => handleInput(e.target.value)}
+              // onChange={(e) => handleInput(e.target.value)}
               type='text'
               placeholder='Type Token Address'
               className='input input-bordered w-full rounded-md'
             />
           </div>
-          <div className='form-control w-full'>
+          {/* <div className='form-control w-full'>
             <label className='label'>
               <span className='label-text'>Select chain</span>
             </label>
@@ -168,7 +167,7 @@ export default function CreateProject() {
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
         <div className='shadow-xl rounded-box border col-span-1 p-8 max-h-72 sticky top-24 bg-base-100'>
           <div className='grid grid-rows-3 gap-4'>

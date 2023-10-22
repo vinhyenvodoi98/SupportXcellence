@@ -60,14 +60,14 @@ contract Vault is ERC4626 {
         erc20.transferFrom(_receiverAddress, address(this), amount + (amount * fee / (10**4)));
     }
 
-    function handle(
-        uint32 _origin,
-        bytes32 _sender,
-        bytes memory _body
-    ) public onlyMailbox{
-        address sender = ByteHasher.bytes32ToAddress(_sender);
-        // emit Received(_origin, sender, _body);
-        // PlaceStruct memory _place = abi.decode(_body,(PlaceStruct));
-        // _internalPlace(_place);
-    }
+    // function handle(
+    //     uint32 _origin,
+    //     bytes32 _sender,
+    //     bytes memory _body
+    // ) public onlyMailbox{
+    //     address sender = ByteHasher.bytes32ToAddress(_sender);
+    //     // emit Received(_origin, sender, _body);
+    //     // PlaceStruct memory _place = abi.decode(_body,(PlaceStruct));
+    //     // _internalPlace(_place);
+    // }
 }

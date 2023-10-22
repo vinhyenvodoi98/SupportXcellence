@@ -5,6 +5,7 @@ interface ContractContextType {
   VaultContractsGoerli: any;
   VaultContractsScroll: any;
   VaultContractsMantle: any;
+  VaultContractsOptimism: any;
   isVaultLoading: boolean;
   isVaultSuccess: boolean;
   vaultData: any;
@@ -55,17 +56,29 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
       staleTime: 10_000,
     });
 
+  const { data: VaultContractsOptimism, refetch: senderRefetchOptimism } =
+    useContractRead({
+      address: vaultFactoryAddress[420].VaultFactory as `0x${string}`,
+      abi: VaultFactoryAbi.abi as any,
+      functionName: 'getDeployedContracts',
+      chainId: 5001,
+      cacheTime: 10_000,
+      staleTime: 10_000,
+    });
+
   useEffect(() => {
     // Call fetchData immediately when the component renders
     senderRefetchGoerli?.();
     senderRefetchMantle?.();
     senderRefetchScroll?.();
+    senderRefetchOptimism?.();
 
     // Set up an interval to call fetchData every 10 seconds
     const interval = setInterval(() => {
       senderRefetchGoerli?.();
       senderRefetchMantle?.();
       senderRefetchScroll?.();
+      senderRefetchOptimism?.();
     }, 10000); // 10000 milliseconds = 10 seconds
 
     // Cleanup khi component unmount
@@ -93,6 +106,7 @@ export const ContractProvider: React.FC<{ children: ReactNode }> = ({
         VaultContractsGoerli,
         VaultContractsScroll,
         VaultContractsMantle,
+        VaultContractsOptimism,
         vaultData,
         isVaultLoading,
         isVaultSuccess,

@@ -1,13 +1,18 @@
 import { getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig } from 'wagmi';
-import { goerli, mantleTestnet, scrollSepolia } from 'wagmi/chains';
+import {
+  goerli,
+  mantleTestnet,
+  optimismGoerli,
+  scrollSepolia,
+} from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
 const { chains, publicClient } = configureChains(
   [
     ...(process.env.NODE_ENV === 'development'
-      ? [scrollSepolia, mantleTestnet, goerli]
-      : [scrollSepolia, mantleTestnet, goerli]),
+      ? [scrollSepolia, mantleTestnet, optimismGoerli, goerli]
+      : [scrollSepolia, mantleTestnet, optimismGoerli, goerli]),
   ],
   [
     jsonRpcProvider({
@@ -25,6 +30,11 @@ const { chains, publicClient } = configureChains(
         if (chain.id === mantleTestnet.id)
           return {
             http: mantleTestnet.rpcUrls.public.http[0],
+          };
+
+        if (chain.id === optimismGoerli.id)
+          return {
+            http: optimismGoerli.rpcUrls.public.http[0],
           };
 
         return null;

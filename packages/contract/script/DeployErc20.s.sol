@@ -32,5 +32,13 @@ contract DeployScript is Script {
     console.log(erc20Mantle);
 
     vm.stopBroadcast();
+
+    // // Optimism
+    vm.createSelectFork(vm.rpcUrl("optimism-goerli"));
+    vm.startBroadcast(privateKey);
+    address erc20Optimism = address(new TokenERC20Test());
+    console.log(erc20Optimism);
+
+    vm.stopBroadcast();
   }
 }

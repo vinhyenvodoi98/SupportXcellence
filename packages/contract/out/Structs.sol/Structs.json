@@ -1,0 +1,79 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "src/helpers/Structs.sol",
+    "id": 39749,
+    "exportedSymbols": {
+      "CreateUserStruct": [
+        39748
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:99:19",
+    "nodes": [
+      {
+        "id": 39745,
+        "nodeType": "PragmaDirective",
+        "src": "32:23:19",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".9"
+        ]
+      },
+      {
+        "id": 39748,
+        "nodeType": "StructDefinition",
+        "src": "87:44:19",
+        "nodes": [],
+        "canonicalName": "CreateUserStruct",
+        "members": [
+          {
+            "constant": false,
+            "id": 39747,
+            "mutability": "mutable",
+            "name": "owner",
+            "nameLocation": "123:5:19",
+            "nodeType": "VariableDeclaration",
+            "scope": 39748,
+            "src": "115:13:19",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 39746,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "115:7:19",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "CreateUserStruct",
+        "nameLocation": "94:16:19",
+        "scope": 39749,
+        "visibility": "public"
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 19
+}

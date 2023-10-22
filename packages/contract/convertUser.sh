@@ -1,6 +1,6 @@
 #!/bin/bash
 
-input_file="broadcast/multi/Deploy.s.sol-latest/run.json"
+input_file="broadcast/multi/DeployUser.s.sol-latest/run.json"
 output_file="output-user.json"
 
 transactions=$(jq -c '.deployments[]' "$input_file")
