@@ -14,4 +14,9 @@ export const chainInfo = {
     image: '/images/chains/mantle.svg',
     browserURL: 'https://explorer.testnet.mantle.xyz',
   },
+  '420': {
+    name: 'Optimism Goerli',
+    image: '/images/chains/optimism.svg',
+    browserURL: 'https://goerli-optimism.etherscan.io',
+  },
 };

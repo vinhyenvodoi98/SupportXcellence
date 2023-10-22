@@ -56,6 +56,8 @@ export default {
           "linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('/images/chains/scroll.svg')",
         '5001':
           "linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('/images/chains/mantle.svg')",
+        '420':
+          "linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('/images/chains/optimism.svg')",
       },
     },
   },

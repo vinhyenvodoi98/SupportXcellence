@@ -26,6 +26,7 @@ remappings = [
 goerli = "https://rpc.ankr.com/eth_goerli"
 scroll-sepolia = "https://rpc.ankr.com/scroll_sepolia_testnet"
 mantle-test = "https://rpc.testnet.mantle.xyz"
+optimism-goerli = "https://optimism-goerli.publicnode.com"
 
 [etherscan]
 goerli = { key = "${ETHERSCAN_API_KEY}" }

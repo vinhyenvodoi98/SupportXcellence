@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
-import Select from 'react-select';
 import { toast } from 'react-toastify';
 import { isAddress } from 'viem';
 import { useChainId, useContractReads } from 'wagmi';
@@ -10,6 +8,8 @@ import Layout from '@/components/layout/Layout';
 import { useContract } from '@/contexts/Contract';
 
 import Erc20Abi from '../../../../contract/out/ERC20.sol/ERC20.json';
+import Select from 'react-select';
+import Image from 'next/image';
 
 export default function CreateProject() {
   const { isVaultSuccess, isVaultLoading, createVault } = useContract();
@@ -23,6 +23,7 @@ export default function CreateProject() {
     { value: '5', label: 'Goelri' },
     { value: '534351', label: 'Scroll Sepolia' },
     { value: '5001', label: 'Mantle Test' },
+    { value: '420', label: 'Optimism Goerli' },
   ];
 
   const defaultOption = useMemo(
@@ -97,7 +98,7 @@ export default function CreateProject() {
               onChange={(e) => handleInput(e.target.value)}
               type='text'
               placeholder='Type Token Address'
-              className='input input-bordered w-full rounded-md'
+              className='input input-bordered w-full rounded-md z-10'
             />
           </div>
           <div className='form-control w-full'>
@@ -152,7 +153,7 @@ export default function CreateProject() {
                     onChange={(e) => setVaultTokenName(e.target.value)}
                     type='text'
                     placeholder={`Vault ${token[0].result}`}
-                    className='input input-bordered w-full rounded-md'
+                    className='input input-bordered w-full rounded-md z-10'
                   />
                 </div>
                 <div className='form-control w-full'>
@@ -163,7 +164,7 @@ export default function CreateProject() {
                     onChange={(e) => setVaultTokenSymbol(e.target.value)}
                     type='text'
                     placeholder={`v${token[1].result}`}
-                    className='input input-bordered w-full rounded-md'
+                    className='input input-bordered w-full rounded-md z-10'
                   />
                 </div>
               </div>

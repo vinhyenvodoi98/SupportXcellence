@@ -32,5 +32,13 @@ contract DeployScript is Script {
     console.log(factoryMantle);
 
     vm.stopBroadcast();
+
+    // // Optimism Goerli
+    vm.createSelectFork(vm.rpcUrl("optimism-goerli"));
+    vm.startBroadcast(privateKey);
+    address factoryOptimism = address(new VaultFactory());
+    console.log(factoryOptimism);
+
+    vm.stopBroadcast();
   }
 }

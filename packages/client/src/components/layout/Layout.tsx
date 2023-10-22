@@ -15,6 +15,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             ? 'bg-5001'
             : (vaultChainId as string) === '5001'
             ? 'bg-534351'
+            : (vaultChainId as string) === '420'
+            ? 'bg-420'
             : ''
         } bg-opacity-25 absolute top-main w-screen h-screen`}
       />
