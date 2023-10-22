@@ -358,7 +358,7 @@ export default function Funds() {
                           Balance:
                           <h1 className='text-center'>
                             {formatEther(BigInt(asset[4].result.toString()))}{' '}
-                            {token[1].result}
+                            {asset[1].result}
                           </h1>
                         </div>
                       )}
